@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="img/icono.png">
+<meta name="description" content="Parcelas con rol propio, acceso a río y crédito directo en Aysén, Los Ríos y el Maule. Inmobiliaria El Roble.">
+<meta property="og:title" content="Parcelas con Río · Inmobiliaria El Roble">
+<meta property="og:description" content="Parcelas junto a ríos en el sur de Chile, con rol propio y crédito directo.">
+<meta property="og:image" content="img/paisaje-lago.jpg">
+<title>Parcelas con Río</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Karla:wght@400;500;700&display=swap">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+/* Layout: río como columna vertical junto al titular; catálogo filtrable por región; proyecto destacado con plano; contacto. */
+:root{
+  --bg:#f3f5f1; --surface:#ffffff; --fg:#1d2a22; --muted:#5b6b60;
+  --accent:#1f2a56; --river:#2f6b7a; --sold:#a2702c; --line:#d7ded6;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --body:"Karla", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121a16; --surface:#1a241f; --fg:#e6ece6; --muted:#9fb0a5;
+  --accent:#f2a950; --river:#7fbfcc; --sold:#e0b06a; --line:#2c3a33; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121a16; --surface:#1a241f; --fg:#e6ece6; --muted:#9fb0a5;
+  --accent:#f2a950; --river:#7fbfcc; --sold:#e0b06a; --line:#2c3a33; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;line-height:1.1;margin:0}
+p{margin:0;max-width:62ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--river);outline-offset:3px}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--river);font-weight:700}
+
+/* nav */
+nav{border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:1.25rem;font-weight:600;color:var(--fg);text-decoration:none}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{height:60px;width:auto;display:block}
+.l-light{display:none}
+.brand small{display:block;font-family:var(--body);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.links{display:flex;gap:20px;flex-wrap:wrap}
+.links a{color:var(--fg);text-decoration:none;font-weight:500;font-size:.95rem}
+.links a:hover{color:var(--river)}
+
+/* hero */
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;padding-block:56px}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);margin-block:12px 20px}
+.hero h1 em{font-style:italic;color:var(--river);font-weight:400}
+.hero p.lead{font-size:1.15rem;color:var(--muted)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:13px 22px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--accent);font-family:var(--body);font-size:1rem;cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.ghost{color:var(--accent);background:transparent}
+.river{position:relative;max-width:100%}
+.river img{display:block;width:100%;aspect-ratio:480/700;object-fit:cover;object-position:50% 60%;border-radius:220px 220px 6px 6px}
+.river figcaption{font-size:.8rem;color:var(--muted);margin-top:8px;text-align:right}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
+.facts div{display:flex;flex-direction:column}
+.facts b{font-family:var(--display);font-size:1.7rem;font-weight:600;font-variant-numeric:tabular-nums}
+.facts span{font-size:.85rem;color:var(--muted)}
+
+/* proyecto */
+section{padding-block:64px}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.split{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.plan img{width:100%;border-radius:6px;display:block}
+.plan figcaption{font-size:.8rem;color:var(--muted);margin-top:8px}
+h2{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-block:10px 16px}
+.lots{display:grid;gap:12px;margin-top:24px}
+.lot{display:grid;grid-template-columns:56px 1fr auto;gap:16px;align-items:center;padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.lot .n{font-family:var(--display);font-size:1.5rem;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--accent);color:var(--accent)}
+.lot h3{font-size:1.15rem}
+.lot .sz{font-size:.9rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.pill{font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:999px;border:1.5px solid currentColor}
+.pill.ok{color:var(--accent)}
+.pill.res{color:var(--sold)}
+.lot.reserved{opacity:.72}
+.note{font-size:.85rem;color:var(--muted);margin-top:14px}
+
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-block:8px 24px}
+.chip{font:inherit;font-size:.9rem;font-weight:500;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);cursor:pointer}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.card{display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.card .reg{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--river);font-weight:700}
+.card h3{font-size:1.35rem}
+.card p{color:var(--muted);font-size:.95rem;flex:1}
+.card .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:.88rem;color:var(--muted)}
+.card a{font-weight:700;text-decoration:none}
+.pill.new{color:var(--river)}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.card.sold{opacity:.7}
+.card.sold .bar i{background:var(--sold)}
+/* atributos */
+.attrs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:32px}
+.attr svg{width:34px;height:34px;stroke:var(--river);fill:none;stroke-width:1.6}
+.attr h3{font-size:1.15rem;margin-block:10px 6px}
+.attr p{color:var(--muted);font-size:.95rem}
+
+/* ubicación */
+.loc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px}
+.dist{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:0}
+.dist li{display:flex;justify-content:space-between;gap:16px;padding-block:12px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.dist li span:last-child{color:var(--muted)}
+.todo{background:color-mix(in srgb,var(--sold) 14%,transparent);border-radius:3px;padding:0 4px}
+
+/* contacto */
+form{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px}
+label{display:grid;gap:6px;font-size:.9rem;font-weight:500}
+input,select,textarea{font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ok-msg{color:var(--accent);font-weight:700}
+.contact-list{display:grid;gap:14px;margin-top:20px}
+.contact-list div{display:flex;flex-direction:column}
+.contact-list span{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.contact-list a{font-weight:700;text-decoration:none;font-size:.95rem}
+.contact-list b{font-size:1.1rem;user-select:all}
+footer{border-top:1px solid var(--line);padding-block:28px;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:860px){
+  .hero .wrap,.split,.loc{grid-template-columns:1fr}
+  .river{max-width:340px;margin-inline:auto}
+  .attrs{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:480px){
+  .attrs,.row2{grid-template-columns:1fr}
+  .lot{grid-template-columns:48px 1fr;}
+  .lot .pill{grid-column:2;justify-self:start}
+  .links{gap:14px}
+}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:hover{transform:translateY(-1px)}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .l-dark{display:none} :root:not([data-theme="light"]) .l-light{display:block}}
+:root[data-theme="dark"] .l-dark{display:none} :root[data-theme="dark"] .l-light{display:block}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#inicio"><img class="logo l-dark" src="img/logo.png" alt="El Roble Inmobiliaria"><img class="logo l-light" src="img/logo-claro.png" alt="" aria-hidden="true"><span>Parcelas con Río<small>Inmobiliaria El Roble</small></span></a>
+  <div class="links"><a href="#proyectos">Proyectos</a><a href="#lotes">Mañihuales</a><a href="#nosotros">Nosotros</a><a href="#contacto">Contacto</a></div>
+</div></nav>
+
+<header class="hero" id="inicio"><div class="wrap">
+  <div>
+    <div class="eyebrow">Inmobiliaria El Roble · Terrenos en el sur de Chile</div>
+    <h1>Parcelas con <em>río</em>, bosque y espacio para vivir</h1>
+    <p class="lead">Vendemos parcelas junto a ríos en las regiones de Aysén, Los Ríos y el Maule. Parcelas con rol propio, acceso a río y crédito directo, para tu casa, tu refugio o tu inversión.</p>
+    <div class="cta">
+      <a class="btn primary" href="#proyectos">Ver proyectos</a>
+      <a class="btn ghost" href="#contacto">Agendar visita</a>
+    </div>
+    <div class="facts">
+      <div><b>5</b><span>proyectos</span></div>
+      <div><b>3</b><span>regiones</span></div>
+      <div><b>XI · XIV · VII</b><span>Aysén, Los Ríos, Maule</span></div>
+    </div>
+  </div>
+  <figure class="river" style="margin:0">
+    <img src="img/paisaje-lago.jpg" alt="Lago y cerros del sur de Chile, con álamos en primer plano">
+  </figure>
+</div></header>
+
+<section class="band" id="proyectos"><div class="wrap">
+  <div class="eyebrow">Catálogo</div>
+  <h2>Proyectos en venta</h2>
+  <div class="chips" role="group" aria-label="Filtrar por región">
+    <button class="chip on" data-r="all" type="button">Todas</button>
+    <button class="chip" data-r="XI" type="button">XI Aysén</button>
+    <button class="chip" data-r="XIV" type="button">XIV Los Ríos</button>
+    <button class="chip" data-r="VII" type="button">VII Maule</button>
+  </div>
+  <div class="cards">
+    <article class="card" data-r="XI">
+      <div class="reg">XI Región de Aysén</div>
+      <h3>Horizontes de Mañihuales</h3>
+      <p>4 parcelas de 0,53 a 1 ha frente al Río Mañihuales, con acceso directo y factibilidad eléctrica.</p>
+      <div class="meta"><span class="pill new">Nuevo</span><span>3 de 4 disponibles</span></div>
+      <a href="#lotes">Ver lotes →</a>
+    </article>
+    <article class="card sold" data-r="XI">
+      <div class="reg">XI Región de Aysén</div>
+      <h3>Altos de Villa Medina</h3>
+      <p>A menos de 20 minutos de Coyhaique y a 1 km de la Carretera Austral.</p>
+      <div class="meta"><span class="pill res">100% vendido</span></div>
+      <div class="bar" aria-label="100% vendido"><i style="width:100%"></i></div>
+    </article>
+    <article class="card" data-r="XI">
+      <div class="reg">XI Región de Aysén</div>
+      <h3>Parcelas Don Guillermo</h3>
+      <p>Frente al Río Emperador Guillermo, en plena Carretera Austral.</p>
+      <div class="meta"><span class="pill res">Queda 1 parcela</span></div>
+      <a href="#contacto" data-p="Parcelas Don Guillermo">Consultar →</a>
+    </article>
+    <article class="card" data-r="XIV">
+      <div class="reg">XIV Región de Los Ríos</div>
+      <h3>Parcelas Rofuco Bajo</h3>
+      <p>Parcelas en el sector de Rofuco Bajo.</p>
+      <div class="meta"><span class="pill ok">57% vendido</span></div>
+      <div class="bar" aria-label="57% vendido"><i style="width:57%"></i></div>
+      <a href="#contacto" data-p="Parcelas Rofuco Bajo">Consultar →</a>
+    </article>
+    <article class="card" data-r="VII">
+      <div class="reg">VII Región del Maule</div>
+      <h3>Parcelación Doña Cecilia</h3>
+      <p>Últimas parcelas disponibles en la Región del Maule.</p>
+      <div class="meta"><span class="pill res">Últimas 6 parcelas</span></div>
+      <a href="#contacto" data-p="Parcelación Doña Cecilia">Consultar →</a>
+    </article>
+  </div>
+</div></section>
+
+<section id="lotes"><div class="wrap split">
+  <figure class="plan" style="margin:0">
+    <img src="img/plano-horizontes-manihuales.jpg" alt="Plano aéreo con los cuatro lotes de Horizontes de Mañihuales; el lote 3 aparece reservado">
+    <figcaption>Plano referencial. Servidumbre de tránsito de 7 m.</figcaption>
+  </figure>
+  <div>
+    <div class="eyebrow">Proyecto destacado · Aysén</div>
+    <h2>Horizontes de Mañihuales</h2>
+    <p>Todos los lotes tienen frente hacia el río, acceso por servidumbre de tránsito y factibilidad eléctrica.</p>
+    <div class="lots">
+      <div class="lot"><div class="n">1</div><div><h3>Lote 1</h3><div class="sz">0,610 ha · 6.100 m² · Precio: <span class="todo">por confirmar</span></div></div><span class="pill ok">Disponible</span></div>
+      <div class="lot"><div class="n">2</div><div><h3>Lote 2</h3><div class="sz">0,529 ha · 5.290 m² · Precio: <span class="todo">por confirmar</span></div></div><span class="pill ok">Disponible</span></div>
+      <div class="lot reserved"><div class="n">3</div><div><h3>Lote 3</h3><div class="sz">0,861 ha · 8.610 m²</div></div><span class="pill res">Reservado</span></div>
+      <div class="lot"><div class="n">4</div><div><h3>Lote 4</h3><div class="sz">1 ha · 10.000 m² · Precio: <span class="todo">por confirmar</span></div></div><span class="pill ok">Disponible</span></div>
+    </div>
+    <p class="note">Superficies según plano del loteo. Todas con rol propio y opción de crédito directo.</p>
+  </div>
+</div></section>
+
+<section class="band" id="nosotros"><div class="wrap">
+  <div class="eyebrow">Por qué Parcelas con Río</div>
+  <h2>Terrenos junto al agua, con todo en regla</h2>
+  <p>Inmobiliaria El Roble selecciona terrenos con agua, acceso y entorno natural, y acompaña cada compra hasta la escritura.</p>
+  <div class="attrs">
+    <div class="attr"><svg viewBox="0 0 24 24"><path d="M2 8c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 6 0M2 13c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 6 0M2 18c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 6 0"/></svg><h3>Frente a ríos</h3><p>Proyectos junto al Mañihuales, el Emperador Guillermo y otros cursos de agua.</p></div>
+    <div class="attr"><svg viewBox="0 0 24 24"><path d="M6 22 10 2M18 22 14 2M12 6v2M12 12v2M12 18v2"/></svg><h3>Acceso</h3><p>Caminos y servidumbres de tránsito hasta cada lote.</p></div>
+    <div class="attr"><svg viewBox="0 0 24 24"><path d="M5 3h10l4 4v14H5zM9 12h6M9 16h6"/></svg><h3>Rol propio</h3><p>Todas las parcelas con rol propio, listas para escriturar.</p></div>
+    <div class="attr"><svg viewBox="0 0 24 24"><path d="M2 20 9 8l4 6 3-4 6 10z"/></svg><h3>Crédito directo</h3><p>Financiamiento directo con la inmobiliaria, sin pasar por el banco.</p></div>
+  </div>
+</div></section>
+
+<section id="contacto"><div class="wrap loc">
+  <div>
+    <div class="eyebrow">Contacto</div>
+    <h2>Agenda una visita al terreno</h2>
+    <p>Déjanos tus datos y te contactamos para mostrarte el proyecto que te interesa, enviarte precios y coordinar una visita.</p>
+    <div class="contact-list">
+      <div><span>Teléfono / WhatsApp</span><b>+56 9 7889 3044</b><a href="https://wa.me/56978893044" target="_blank" rel="noopener">Escribir por WhatsApp →</a></div>
+      <div><span>Correo</span><b>contacto@parcelasconrio.cl</b><b>parcelasconrio@gmail.com</b></div>
+      <div><span>Instagram</span><a href="https://www.instagram.com/inmobiliariaelroble.cl/" target="_blank" rel="noopener"><b>@inmobiliariaelroble.cl</b></a></div>
+      <div><span>Inmobiliaria</span><b>Inmobiliaria El Roble</b></div>
+    </div>
+  </div>
+  <form id="f">
+    <label for="nombre">Nombre<input id="nombre" required autocomplete="name"></label>
+    <div class="row2">
+      <label for="tel">Teléfono<input id="tel" type="tel" autocomplete="tel"></label>
+      <label for="mail">Correo<input id="mail" type="email" required autocomplete="email"></label>
+    </div>
+    <label for="lote">Proyecto de interés<select id="lote"><option>Cualquiera</option><option>Horizontes de Mañihuales</option><option>Parcelas Don Guillermo</option><option>Parcelas Rofuco Bajo</option><option>Parcelación Doña Cecilia</option></select></label>
+    <label for="msg">Mensaje<textarea id="msg" rows="3" placeholder="Me gustaría visitar el terreno…"></textarea></label>
+    <button class="btn primary" type="submit">Enviar consulta por WhatsApp</button>
+    <p class="ok-msg" id="ok" hidden>Se abrirá WhatsApp con tu consulta lista para enviar. Si no se abre, escríbenos al +56 9 7889 3044.</p>
+  </form>
+</div></section>
+
+<footer><div class="wrap"><span><img class="logo l-dark" src="img/logo.png" alt="El Roble Inmobiliaria" style="height:48px;margin-bottom:8px"><img class="logo l-light" src="img/logo-claro.png" alt="" aria-hidden="true" style="height:48px;margin-bottom:8px">© 2026 Inmobiliaria El Roble · parcelasconrio.cl</span><span>+56 9 7889 3044 · contacto@parcelasconrio.cl · <a href="https://www.instagram.com/inmobiliariaelroble.cl/" target="_blank" rel="noopener">Instagram</a></span></div></footer>
+
+<script>
+document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){
+  document.querySelectorAll('.chip').forEach(function(x){x.classList.toggle('on',x===c)});
+  document.querySelectorAll('.card').forEach(function(k){k.hidden=!(c.dataset.r==='all'||k.dataset.r===c.dataset.r)});});});
+document.querySelectorAll('a[data-p]').forEach(function(a){a.addEventListener('click',function(){document.getElementById('lote').value=a.dataset.p;});});
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();
+  var v=function(id){return document.getElementById(id).value.trim()};
+  var txt='Hola, soy '+v('nombre')+'. Me interesa: '+v('lote')+'.'+(v('msg')?' '+v('msg'):'')+(v('tel')?' Tel: '+v('tel'):'')+(v('mail')?' Correo: '+v('mail'):'');
+  window.open('https://wa.me/56978893044?text='+encodeURIComponent(txt),'_blank','noopener');
+  document.getElementById('ok').hidden=false;});
+</script>
+
+</body>
+</html>
