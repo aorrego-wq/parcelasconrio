@@ -194,6 +194,22 @@ def home(lang):
   </div>
 </section>
 
+<section class="follow">
+  <div class="wrap">
+    <div class="follow-in reveal">
+      <div>
+        <span class="eyebrow">{L(lang, 'Redes sociales', 'Social media')}</span>
+        <h2>{L(lang, 'Síguenos y vive el sur cada semana', 'Follow us and see the south every week')}</h2>
+        <p class="lead">{L(lang, 'Videos de los terrenos, nuevos proyectos, parcelas disponibles y paisajes de cada estación.', 'Videos of the land, new projects, available plots and landscapes from every season.')}</p>
+      </div>
+      <div class="follow-btns">
+        <a class="sbtn fb" href="{FB}" target="_blank" rel="noopener" data-cta="home-facebook">{ICONS['fb']}<span><b>Facebook</b>Inmobiliaria El Roble</span></a>
+        <a class="sbtn ig" href="{IG}" target="_blank" rel="noopener" data-cta="home-instagram">{ICONS['ig']}<span><b>Instagram</b>@inmobiliariaelroble.cl</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 {contact_section(path, lang)}
 """
     schema = {"@context": "https://schema.org", "@type": "RealEstateAgent", "name": "Inmobiliaria El Roble · Parcelas con Río",

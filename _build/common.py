@@ -43,6 +43,8 @@ ICONS = {
     "plane": '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M2.5 13.5 21 6l-3.5 13-5-4.5-3 3.5v-5L21 6"/></svg>',
     "tree": '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M12 22v-6M12 2 5 12h4l-3 4h12l-3-4h4z"/></svg>',
     "bolt": '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>',
+    "fb": '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21h3.1Z"/></svg>',
+    "ig": '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>',
     "menu": '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></svg>',
     "arrow": '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>',
 }
@@ -161,6 +163,7 @@ def footer(lang, path, blog_items=()):
       <div>
         <img src="{r}assets/img/marca/logo-claro.png" width="397" height="400" alt="El Roble Inmobiliaria" loading="lazy">
         <p>{L('Parcelas con rol propio junto a ríos del sur de Chile. Tu refugio en la Patagonia, con crédito directo.', 'Land plots with their own title next to rivers in southern Chile. Your refuge in Patagonia, with direct financing.')}</p>
+        <div class="social"><a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook" data-cta="footer-facebook">{ICONS['fb']}</a><a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram" data-cta="footer-instagram">{ICONS['ig']}</a></div>
       </div>
       <div><h4>{L('Sitio', 'Site')}</h4><ul>{nav}</ul></div>
       <div><h4>{L('Guías del blog', 'Travel guides')}</h4><ul>{posts}</ul></div>

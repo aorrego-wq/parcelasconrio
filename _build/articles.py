@@ -10,8 +10,8 @@ ARTICLES = [
         "cat_es": "Cómo llegar", "cat_en": "Getting there",
         "title_es": "Cómo llegar a Coyhaique: vuelos, aeropuerto y rutas", "title_en": "How to get to Coyhaique: flights, airport and roads",
         "seo_es": "Cómo llegar a Coyhaique en avión o por tierra (guía 2026) | Parcelas con Río", "seo_en": "How to get to Coyhaique by plane or road (2026 guide) | Parcelas con Río",
-        "desc_es": "Vuelos a Balmaceda, el proyecto de aeropuerto para Coyhaique, distancias y rutas para llegar a la capital de la Patagonia de Aysén.",
-        "desc_en": "Flights to Balmaceda, Coyhaique's airport project, distances and routes to reach the capital of Aysén Patagonia.",
+        "desc_es": "Vuelos a Balmaceda, el nuevo terminal del aeropuerto (octubre de 2026), distancias y rutas para llegar a la capital de la Patagonia de Aysén.",
+        "desc_en": "Flights to Balmaceda, the new airport terminal (October 2026), distances and routes to reach the capital of Aysén Patagonia.",
         "tile_es": "Coyhaique, cada vez más cerca", "tile_en": "Coyhaique, closer than ever",
         "tilep_es": "Nuevo terminal del Aeropuerto Balmaceda desde octubre de 2026.", "tilep_en": "New Balmaceda Airport terminal since October 2026.",
         "near": [
