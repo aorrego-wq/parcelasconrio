@@ -20,31 +20,13 @@
     nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
   }
 
-  /* Portada: video de la estación actual (hemisferio sur) y luego rota por las cuatro */
-  var hero=document.querySelector('[data-seasonal-hero]');
-  if(hero){
-    var seasons=['verano','verano','otono','otono','otono','invierno','invierno','invierno','primavera','primavera','primavera','verano'];
-    var order=['primavera','verano','otono','invierno'];
-    var names={es:{primavera:'Primavera',verano:'Verano',otono:'Otoño',invierno:'Invierno'},en:{primavera:'Spring',verano:'Summer',otono:'Autumn',invierno:'Winter'}};
-    var mobile=window.matchMedia('(max-width:720px)').matches?'mobile':'desktop';
-    var start=order.indexOf(seasons[new Date().getMonth()]);
-    var vids=[].slice.call(hero.querySelectorAll('video'));
-    var tag=hero.querySelector('.season-tag');
-    var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    var set=function(v,s){v.poster=root+'assets/img/hero/'+mobile+'/'+s+'.webp';v.src=root+'assets/video/hero/'+mobile+'/'+s+'.mp4';v.dataset.season=s};
-    var i=start; set(vids[0],order[i]); vids[0].classList.add('is-active');
-    if(tag) tag.textContent=names[lang][order[i]];
-    if(!reduce){
-      vids[0].play().catch(function(){});
-      var cur=0;
-      setInterval(function(){
-        i=(i+1)%4; var nxt=1-cur; set(vids[nxt],order[i]);
-        vids[nxt].play().catch(function(){});
-        vids[nxt].classList.add('is-active'); vids[cur].classList.remove('is-active');
-        if(tag) tag.textContent=names[lang][order[i]];
-        cur=nxt;
-      },12000);
-    }
+  /* Portada: video de bienvenida (versión liviana en celular) */
+  var hv=document.querySelector('[data-hero-video] video');
+  if(hv){
+    var small=window.matchMedia('(max-width:720px)').matches;
+    if(small) hv.poster=hv.dataset.posterMobile;
+    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){hv.removeAttribute('autoplay')}
+    else{hv.src=small?hv.dataset.mobile:hv.dataset.desktop;hv.play().catch(function(){})}
   }
 
   /* Filtro de proyectos por región */

@@ -109,10 +109,9 @@ PROJECT_NAMES = [p["name"] for p in PROJECTS if not p["sold"]]
 def home(lang):
     def body(path):
         r = root(path)
-        return f"""<section class="hero" data-seasonal-hero>
+        return f"""<section class="hero" data-hero-video>
   <div class="hero-media" aria-hidden="true">
-    <video muted playsinline loop preload="auto" poster="{r}{IMG['hero_poster']['src']}"></video>
-    <video muted playsinline loop preload="none"></video>
+    <video class="is-active" muted playsinline loop autoplay preload="auto" poster="{r}assets/img/bienvenida/poster-1280.jpg" data-desktop="{r}assets/video/bienvenida/horizontes-de-manihuales-1280.mp4" data-mobile="{r}assets/video/bienvenida/horizontes-de-manihuales-960.mp4" data-poster-mobile="{r}assets/img/bienvenida/poster-960.jpg"></video>
   </div>
   <div class="wrap">
     <span class="eyebrow light">{L(lang, 'Patagonia chilena · Sur de Chile', 'Chilean Patagonia · Southern Chile')}</span>
@@ -129,7 +128,7 @@ def home(lang):
       <div><b>{L(lang, 'Crédito', 'Direct')}</b><span>{L(lang, 'directo', 'financing')}</span></div>
     </div>
   </div>
-  <span class="season-tag" aria-hidden="true"></span>
+  <span class="season-tag">{L(lang, 'Horizontes de Mañihuales · Región de Aysén', 'Horizontes de Mañihuales · Aysén Region')}</span>
 </section>
 
 <section class="statement">
