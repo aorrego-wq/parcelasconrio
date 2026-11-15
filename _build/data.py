@@ -4,7 +4,7 @@
 # Las fotos de paisajes provienen del material del cliente (Terrazas del Fraile)
 # y se usan como referencia del territorio, nunca como foto de un lote.
 IMG = {
-    "hero_poster": {"src": "assets/img/bienvenida/home-poster-1280.jpg"},
+    "hero_poster": {"src": "assets/img/bienvenida/home-v2-poster-1280.jpg"},
     "coyhaique": {"src": "assets/img/patagonia/coyhaique-1200.webp", "alt_es": "Vista aérea de Coyhaique con cerros nevados", "alt_en": "Aerial view of Coyhaique with snowy peaks"},
     "carretera": {"src": "assets/img/patagonia/hero-carretera-austral.webp", "alt_es": "Carretera Austral entre paredes de roca en Aysén", "alt_en": "Carretera Austral between rock walls in Aysén"},
     "carretera2": {"src": "assets/img/patagonia/carretera-austral-1200.webp", "alt_es": "Valle y camino en la Región de Aysén", "alt_en": "Valley and road in the Aysén Region"},
