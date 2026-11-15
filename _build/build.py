@@ -111,7 +111,7 @@ def home(lang):
         r = root(path)
         return f"""<section class="hero" data-hero-video>
   <div class="hero-media" aria-hidden="true">
-    <video class="is-active" muted playsinline loop autoplay preload="auto" poster="{r}assets/img/bienvenida/poster-1280.jpg" data-desktop="{r}assets/video/bienvenida/horizontes-de-manihuales-1280.mp4" data-mobile="{r}assets/video/bienvenida/horizontes-de-manihuales-960.mp4" data-poster-mobile="{r}assets/img/bienvenida/poster-960.jpg"></video>
+    <video class="is-active" muted playsinline loop autoplay preload="auto" poster="{r}assets/img/bienvenida/home-poster-1280.jpg" data-desktop="{r}assets/video/bienvenida/manihuales-home-1280.mp4" data-mobile="{r}assets/video/bienvenida/manihuales-home-960.mp4" data-poster-mobile="{r}assets/img/bienvenida/home-poster-960.jpg"></video>
   </div>
   <div class="wrap">
     <span class="eyebrow light">{L(lang, 'Patagonia chilena · Sur de Chile', 'Chilean Patagonia · Southern Chile')}</span>
