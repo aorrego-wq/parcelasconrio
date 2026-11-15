@@ -152,7 +152,6 @@ def header(lang, path, alt_path, current=None, solid=False):
       {''.join(links)}
       <div class="nav-extra">
         <a class="btn btn-sun" href="{wa_link(cta_txt)}" target="_blank" rel="noopener" data-cta="menu-whatsapp">{ICONS['wa']}WhatsApp</a>
-        <a class="nav-extra-tel" href="tel:{TEL}">{WA_TXT}</a>
         <div class="nav-extra-row">
           <a class="social-link" href="{IG}" target="_blank" rel="noopener">{IG_SVG}<span>Instagram</span></a>
           <a class="social-link" href="{FB}" target="_blank" rel="noopener">{FB_SVG}<span>Facebook</span></a>
@@ -163,7 +162,6 @@ def header(lang, path, alt_path, current=None, solid=False):
     <div class="top-actions">
       <a class="nav-social" href="{IG}" target="_blank" rel="noopener" aria-label="{'Instagram de Inmobiliaria El Roble' if lang == 'es' else 'Inmobiliaria El Roble on Instagram'}" data-cta="header-instagram">{IG_SVG}</a>
       <a class="nav-social" href="{FB}" target="_blank" rel="noopener" aria-label="{'Facebook de Inmobiliaria El Roble' if lang == 'es' else 'Inmobiliaria El Roble on Facebook'}" data-cta="header-facebook">{FB_SVG}</a>
-      <a class="nav-phone" href="tel:{TEL}" data-cta="header-telefono">{WA_TXT}</a>
       <a class="lang" href="{other}" hreflang="{'en' if lang == 'es' else 'es'}" title="{lang_title}">{lang_label}</a>
       <a class="btn btn-sun" href="{wa_link(cta_txt)}" target="_blank" rel="noopener" data-cta="header-whatsapp">{ICONS['wa']}<span>WhatsApp</span></a>
       <button class="menu-btn" id="menuBtn" aria-label="{'Abrir menú' if lang == 'es' else 'Open menu'}" aria-expanded="false" aria-controls="nav">{ICONS['menu']}</button>
