@@ -6,7 +6,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import (DOMAIN, ICONS, IG, MAIL, PATHS, WA, WA_TXT, esc, footer,  # noqa: E402
+from common import (DOMAIN, FB, ICONS, IG, MAIL, PATHS, WA, WA_TXT, esc, footer,  # noqa: E402
                   head, header, lead_form, pretty, rel, root, wa_link, write)
 from data import IMG, MANIHUALES_LOTS, PROJECTS  # noqa: E402
 from articles import ARTICLES  # noqa: E402
@@ -115,7 +115,7 @@ def home(lang):
   <div class="wrap">
     <span class="eyebrow light">{L(lang, 'Patagonia chilena · Sur de Chile', 'Chilean Patagonia · Southern Chile')}</span>
     <h1>{L(lang, 'Tu refugio junto al <em>río</em>, en el fin del mundo', 'Your riverside <em>refuge</em> at the end of the world')}</h1>
-    <p class="lead">{L(lang, 'Parcelas con rol propio frente a ríos de Aysén y del sur de Chile. Bosques, glaciares, pesca y nieve a minutos de tu puerta, con crédito directo.', 'Land plots with their own title facing rivers in Aysén and southern Chile. Forests, glaciers, fishing and snow minutes from your door, with direct financing.')}</p>
+    <p class="lead">{L(lang, 'Parcelas con rol propio frente a ríos de Aysén y del sur de Chile. Bosques, ríos de pesca, lagos y nieve a tu alcance, con crédito directo.', 'Land plots with their own title facing rivers in Aysén and southern Chile. Forests, fishing rivers, lakes and snow within reach, with direct financing.')}</p>
     <div class="hero-ctas">
       <a class="btn btn-sun" href="{rel(path, PATHS['projects'][0 if lang == 'es' else 1])}" data-cta="home-hero-proyectos">{L(lang, 'Ver parcelas disponibles', 'See available plots')}</a>
       <a class="btn btn-ghost" href="{rel(path, PATHS['patagonia'][0 if lang == 'es' else 1])}" data-cta="home-hero-patagonia">{L(lang, 'Descubrir la Patagonia', 'Discover Patagonia')}</a>
@@ -157,8 +157,8 @@ def home(lang):
   <div class="wrap">
     <div class="section-head center">
       <span class="eyebrow light">{L(lang, 'Vivir la Patagonia', 'Live Patagonia')}</span>
-      <h2>{L(lang, 'Todo esto queda cerca de tu parcela', 'All of this is close to your plot')}</h2>
-      <p class="lead">{L(lang, 'Aysén es uno de los destinos naturales más impresionantes del planeta. Estas son algunas de las experiencias que tendrás a mano.', 'Aysén is one of the most stunning natural destinations on the planet. These are some of the experiences within reach.')}</p>
+      <h2>{L(lang, 'Todo esto te espera en Aysén', 'All of this awaits you in Aysén')}</h2>
+      <p class="lead">{L(lang, 'Aysén es uno de los destinos naturales más impresionantes del planeta. Estas son algunas de las experiencias que puedes vivir en la región.', 'Aysén is one of the most stunning natural destinations on the planet. These are some of the experiences you can enjoy in the region.')}</p>
     </div>
     <div class="mosaic">
     {tiles(path, lang)}
@@ -197,7 +197,7 @@ def home(lang):
 """
     schema = {"@context": "https://schema.org", "@type": "RealEstateAgent", "name": "Inmobiliaria El Roble · Parcelas con Río",
               "url": DOMAIN + "/", "logo": DOMAIN + "/assets/img/marca/logo.png", "telephone": "+" + WA, "email": MAIL,
-              "areaServed": ["Región de Aysén", "Región de Los Ríos", "Región del Maule"], "sameAs": [IG]}
+              "areaServed": ["Región de Aysén", "Región de Los Ríos", "Región del Maule"], "sameAs": [IG, FB]}
     page(lang, "home",
          L(lang, "Parcelas con Río · Parcelas en la Patagonia con crédito directo", "Parcelas con Río · Land for sale in Chilean Patagonia"),
          L(lang, "Parcelas con rol propio frente a ríos en Aysén, Los Ríos y el Maule. Tu refugio en la Patagonia chilena, cerca de Coyhaique, con crédito directo.",
@@ -233,6 +233,7 @@ def contact_section(path, lang, preset=""):
         <div><span>WhatsApp</span><a href="https://wa.me/{WA}" target="_blank" rel="noopener" data-cta="contacto-whatsapp">{WA_TXT}</a></div>
         <div><span>{L(lang, 'Correo', 'Email')}</span><a href="mailto:{MAIL}">{MAIL}</a></div>
         <div><span>Instagram</span><a href="{IG}" target="_blank" rel="noopener">@inmobiliariaelroble.cl</a></div>
+        <div><span>Facebook</span><a href="{FB}" target="_blank" rel="noopener">Inmobiliaria El Roble</a></div>
       </div>
     </div>
     {lead_form(lang, PROJECT_NAMES, preset)}

@@ -12,6 +12,7 @@ WA = "56978893044"
 WA_TXT = "+56 9 7889 3044"
 MAIL = "contacto@parcelasconrio.cl"
 IG = "https://www.instagram.com/inmobiliariaelroble.cl/"
+FB = "https://www.facebook.com/Inmobiliariaelroble.cl/"
 OUT = os.path.join(os.path.dirname(__file__), "..")
 
 # Rutas equivalentes ES <-> EN (clave = id de página)
@@ -167,6 +168,7 @@ def footer(lang, path, blog_items=()):
         <li><a href="https://wa.me/{WA}" target="_blank" rel="noopener" data-cta="footer-whatsapp">WhatsApp {WA_TXT}</a></li>
         <li><a href="mailto:{MAIL}">{MAIL}</a></li>
         <li><a href="{IG}" target="_blank" rel="noopener">Instagram @inmobiliariaelroble.cl</a></li>
+        <li><a href="{FB}" target="_blank" rel="noopener">Facebook Inmobiliaria El Roble</a></li>
       </ul></div>
     </div>
     <div class="bottom"><span>© 2026 Inmobiliaria El Roble · parcelasconrio.cl</span><span>{L('Algunas fotografías son referenciales del territorio.', 'Some photographs are illustrative of the region.')} <a href="{rel(path, PATHS['about'][i])}#creditos">{L('Créditos de fotos', 'Photo credits')}</a></span></div>

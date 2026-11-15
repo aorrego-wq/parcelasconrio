@@ -58,8 +58,8 @@ def patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, co
     from data import IMG
     by = {a["key"]: a for a in ARTICLES}
     blocks = [
-        ("aeropuerto", "coyhaique", False), ("marmol", None, True), ("carretera", "carretera2", False),
-        ("ski", "ski", True), ("pesca", "lago_bote", False), ("castillo", "castillo", True), ("vivir", "salto", False),
+        ("aeropuerto", "coyhaique", False), ("marmol", "marmol2", True), ("carretera", "carretera2", False),
+        ("ski", "ski", True), ("pesca", "simpson3", False), ("castillo", "ccastillo4", True), ("vivir", "coy2", False),
     ]
 
     def body(path):
@@ -80,12 +80,12 @@ def patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, co
   </div>
 </section>""")
         return f"""<section class="page-hero">
-  {img(path, 'castillo', lang, eager=True)}
+  {img(path, 'ccastillo1', lang, eager=True)}
   <div class="wrap">
     <nav class="crumbs"><a href="{rel(path, PATHS['home'][0 if lang == 'es' else 1])}">{L(lang, 'Inicio', 'Home')}</a><span>/</span>{L(lang, 'Vivir la Patagonia', 'Patagonia')}</nav>
     <span class="eyebrow light">{L(lang, 'Región de Aysén · Patagonia chilena', 'Aysén Region · Chilean Patagonia')}</span>
     <h1>{L(lang, 'Un territorio para enamorarse cada estación', 'A land to fall in love with every season')}</h1>
-    <p class="lead">{L(lang, 'Glaciares, lagos turquesa, ríos de pesca de clase mundial, nieve y bosques infinitos. Esto es lo que te espera cerca de tu parcela.', 'Glaciers, turquoise lakes, world-class fishing rivers, snow and endless forests. This is what awaits you near your plot.')}</p>
+    <p class="lead">{L(lang, 'Glaciares, lagos turquesa, ríos de pesca de clase mundial, nieve y bosques infinitos. Esto es lo que te espera en la Región de Aysén.', 'Glaciers, turquoise lakes, world-class fishing rivers, snow and endless forests. This is what awaits you in the Aysén Region.')}</p>
   </div>
 </section>
 {''.join(secs)}
@@ -93,7 +93,7 @@ def patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, co
     page(lang, "patagonia", L(lang, "Vivir la Patagonia: Coyhaique, Catedrales de Mármol, pesca, ski y trekking | Parcelas con Río", "Living in Patagonia: Coyhaique, Marble Caves, fishing, skiing and trekking | Parcelas con Río"),
          L(lang, "Todo lo que ofrece la Región de Aysén: cómo llegar a Coyhaique, Catedrales de Mármol, Carretera Austral, centro de ski El Fraile, pesca con mosca y trekking.",
            "Everything the Aysén Region offers: getting to Coyhaique, the Marble Caves, Carretera Austral, El Fraile ski area, fly fishing and trekking."),
-         IMG["castillo"]["src"], body, current="patagonia")
+         IMG["ccastillo1"]["src"], body, current="patagonia")
 
 
 def about(lang, page, img, L, rel, PATHS, IMG):
