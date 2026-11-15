@@ -3,6 +3,7 @@
 Uso:  python3 _build/build.py
 """
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -96,7 +97,7 @@ def tiles(path, lang):
     out = []
     for k, cls in spec:
         a = by[k]
-        out.append(f"""<a class="tile reveal {cls}" href="{rel(path, art_path(a, lang))}">{img(path, a['img'], lang)}{('<span class="credit">' + IMG[a['img']]['credit'] + '</span>') if IMG[a['img']].get('credit') else ''}
+        out.append(f"""<a class="tile reveal {cls}" href="{rel(path, art_path(a, lang))}">{img(path, a['img'], lang)}{('<span class="credit">' + re.sub(r'<[^>]+>', '', IMG[a['img']]['credit']) + '</span>') if IMG[a['img']].get('credit') else ''}
       <div class="in"><small>{a['cat_' + lang]}</small><h3>{a['tile_' + lang]}</h3><p>{a['tilep_' + lang]}</p></div></a>""")
     return "\n    ".join(out)
 
@@ -304,7 +305,7 @@ def project_page(p, lang):
                 for n, es, en, res in MANIHUALES_LOTS)
             extra = f"""<section class="split">
   <div class="wrap">
-    <figure>{img(path, 'plano_manihuales', lang)}<figcaption>{L(lang, 'Plano referencial. Servidumbre de tránsito de 7 m.', 'Reference plan. 7 m right-of-way.')}</figcaption></figure>
+    <figure>{img(path, 'plano_manihuales', lang, cls='plan')}<figcaption>{L(lang, 'Plano referencial. Servidumbre de tránsito de 7 m.', 'Reference plan. 7 m right-of-way.')}</figcaption></figure>
     <div>
       <span class="eyebrow">{L(lang, 'Lotes', 'Lots')}</span>
       <h2>{L(lang, 'Cuatro lotes, todos mirando al río', 'Four lots, all facing the river')}</h2>
@@ -392,7 +393,7 @@ def blog_index(lang):
 </section>
 <section>
   <div class="wrap">
-    <div class="posts">
+    <div class="posts all">
     {post_cards(path, lang, ARTICLES)}
     </div>
   </div>

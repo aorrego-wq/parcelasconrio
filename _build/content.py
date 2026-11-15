@@ -88,7 +88,17 @@ def patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, co
     <p class="lead">{L(lang, 'Glaciares, lagos turquesa, ríos de pesca de clase mundial, nieve y bosques infinitos. Esto es lo que te espera en la Región de Aysén.', 'Glaciers, turquoise lakes, world-class fishing rivers, snow and endless forests. This is what awaits you in the Aysén Region.')}</p>
   </div>
 </section>
-{''.join(secs)}
+{''.join(secs[:3])}
+<section class="band">
+  {img(path, 'ruta3', lang)}
+  <div class="wrap">
+    <span class="eyebrow light">{L(lang, 'Tu lugar en el sur', 'Your place in the south')}</span>
+    <h2>{L(lang, 'Imagina volver aquí cada fin de semana', 'Imagine coming back here every weekend')}</h2>
+    <p>{L(lang, 'Parcelas con rol propio frente a ríos de Aysén, con crédito directo sin interés.', 'Plots with their own title facing rivers in Aysén, with interest-free direct financing.')}</p>
+    <div class="hero-ctas"><a class="btn btn-sun" href="{rel(path, PATHS['projects'][0 if lang == 'es' else 1])}">{L(lang, 'Ver parcelas', 'See plots')}</a></div>
+  </div>
+</section>
+{''.join(secs[3:])}
 {contact_section(path, lang)}"""
     page(lang, "patagonia", L(lang, "Vivir la Patagonia: Coyhaique, Catedrales de Mármol, pesca, ski y trekking | Parcelas con Río", "Living in Patagonia: Coyhaique, Marble Caves, fishing, skiing and trekking | Parcelas con Río"),
          L(lang, "Todo lo que ofrece la Región de Aysén: cómo llegar a Coyhaique, Catedrales de Mármol, Carretera Austral, centro de ski El Fraile, pesca con mosca y trekking.",
@@ -124,11 +134,23 @@ def about(lang, page, img, L, rel, PATHS, IMG):
     </div>
   </div>
 </section>
-<section id="creditos" style="background:var(--cream);padding-block:56px">
+<section style="background:var(--cream)">
   <div class="wrap">
-    <h2 style="font-size:1.6rem;margin-bottom:14px">{L(lang, 'Créditos de fotografías', 'Photo credits')}</h2>
+    <div class="section-head"><span class="eyebrow">{L(lang, 'Cómo comprar', 'How to buy')}</span><h2>{L(lang, 'Del primer mensaje a tu escritura', 'From first message to your deed')}</h2></div>
+    <ol class="steps">
+      <li><strong>{L(lang, 'Elige tu proyecto', 'Choose your project')}</strong><span>{L(lang, 'Revisa los proyectos y escríbenos para recibir precios, planos y disponibilidad.', 'Browse the projects and write to us for prices, plans and availability.')}</span></li>
+      <li><strong>{L(lang, 'Visita el terreno', 'Visit the land')}</strong><span>{L(lang, 'Coordinamos contigo una visita para que conozcas la parcela y su entorno.', 'We arrange a visit so you can see the plot and its surroundings.')}</span></li>
+      <li><strong>{L(lang, 'Elige cómo pagar', 'Choose how to pay')}</strong><span>{L(lang, 'Al contado o con crédito directo sin interés. Simula tu plan en línea.', 'Cash or interest-free direct financing. Simulate your plan online.')}</span></li>
+      <li><strong>{L(lang, 'Firma y escritura', 'Sign and deed')}</strong><span>{L(lang, 'Te acompañamos en la firma ante notario y la inscripción de tu parcela.', 'We guide you through signing before a notary and registering your plot.')}</span></li>
+    </ol>
+  </div>
+</section>
+<section id="creditos" style="padding-block:40px">
+  <div class="wrap">
+    <details class="credits"><summary>{L(lang, 'Créditos de fotografías', 'Photo credits')}</summary>
     <p style="color:var(--muted);margin-bottom:14px">{L(lang, 'Las fotografías de paisajes de Aysén son referenciales del territorio y no corresponden necesariamente a los terrenos en venta. Las fotos de terceros se usan según su licencia:', 'Aysén landscape photos are illustrative of the region and do not necessarily show the land for sale. Third-party photos are used under their licenses:')}</p>
     <ul style="color:var(--muted);font-size:.9rem">{credits}</ul>
+    </details>
   </div>
 </section>"""
     page(lang, "about", L(lang, "Nosotros · Inmobiliaria El Roble | Parcelas con Río", "About us · Inmobiliaria El Roble | Parcelas con Río"),

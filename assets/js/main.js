@@ -4,16 +4,20 @@
 
   /* Cabecera sólida al hacer scroll */
   var top=document.querySelector('.top');
-  if(top&&!top.classList.contains('always')){
-    var onScroll=function(){top.classList.toggle('solid',window.scrollY>40)};
-    onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
-  }
+  var onScroll=function(){
+    if(top&&!top.classList.contains('always')) top.classList.toggle('solid',window.scrollY>40);
+    document.body.classList.toggle('scrolled',window.scrollY>500);
+  };
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
 
   /* Menú móvil */
   var btn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
   if(btn&&nav){
-    btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
-    nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')}});
+    var burger=btn.innerHTML,close='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>';
+    var setMenu=function(o){nav.classList.toggle('open',o);btn.setAttribute('aria-expanded',o);btn.innerHTML=o?close:burger;btn.setAttribute('aria-label',o?(lang==='en'?'Close menu':'Cerrar menú'):(lang==='en'?'Open menu':'Abrir menú'))};
+    btn.addEventListener('click',function(){setMenu(!nav.classList.contains('open'))});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
+    nav.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
   }
 
   /* Portada: video de la estación actual (hemisferio sur) y luego rota por las cuatro */
@@ -77,11 +81,11 @@
       if(document.activeElement!==priceEl&&price) priceEl.value=price.toLocaleString('es-CL');
       [].forEach.call(sim.querySelectorAll('[data-cuota]'),function(el){
         var k=el.dataset.cuota.split('-'),pct=+k[0],n=+k[1];
-        el.textContent=price?money(price*(1-pct/100)/n)+(lang==='en'?'/mo':'/mes'):'—';
+        el.textContent=price?money(price*(1-pct/100)/n)+(lang==='en'?'/mo':'/mes'):(lang==='en'?'Instalment by price':'Cuota según precio');
       });
       var sel=sim.querySelector('input[name=plan]:checked').value.split('-'),pct=+sel[0],n=+sel[1];
       var pie=price*pct/100,saldo=price-pie,cuota=saldo/n;
-      document.getElementById('simCuota').textContent=price?money(cuota):'—';
+      var big=document.getElementById('simCuota');big.textContent=price?money(cuota):(lang==='en'?'Enter a price':'Ingresa un precio');big.classList.toggle('empty',!price);
       document.getElementById('simPlan').textContent=n+' '+t.inst+' · '+pct+'% '+t.down;
       document.getElementById('simTotal').textContent=price?money(price):'—';
       document.getElementById('simPie').textContent=price?money(pie):'—';

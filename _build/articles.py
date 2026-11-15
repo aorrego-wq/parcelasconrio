@@ -15,7 +15,7 @@ ARTICLES = [
         "tile_es": "Coyhaique, cada vez más cerca", "tile_en": "Coyhaique, closer than ever",
         "tilep_es": "Nuevo terminal del Aeropuerto Balmaceda desde octubre de 2026.", "tilep_en": "New Balmaceda Airport terminal since October 2026.",
         "near": [
-            ("5·10·2026", "Nuevo terminal Balmaceda", "New Balmaceda terminal", "Cinco veces más grande, para más de 1 millón de pasajeros al año.", "Five times larger, for over 1 million passengers a year."),
+            ("Oct 2026", "Nuevo terminal Balmaceda", "New Balmaceda terminal", "Cinco veces más grande, para más de 1 millón de pasajeros al año.", "Five times larger, for over 1 million passengers a year."),
             ("2 h 20", "Vuelo desde Santiago", "Flight from Santiago", "Directo a Balmaceda con LATAM y Sky.", "Direct to Balmaceda with LATAM and Sky."),
             ("1 h 20", "Vuelo desde Puerto Montt", "Flight from Puerto Montt", "Con Sky, JetSMART y LATAM.", "With Sky, JetSMART and LATAM."),
             ("55 km", "Balmaceda – Coyhaique", "Balmaceda – Coyhaique", "Cerca de una hora por tierra hasta la ciudad.", "About an hour by road to town."),

@@ -22,7 +22,7 @@ IMG = {
     "valle": {"src": "assets/img/paisajes/valle-primavera.webp", "alt_es": "Valle verde con bosque nativo en Aysén", "alt_en": "Green valley with native forest in Aysén"},
     "bosque_aereo": {"src": "assets/img/paisajes/bosque-aereo.webp", "alt_es": "Vista aérea de bosque nativo", "alt_en": "Aerial view of native forest"},
     "bosque": {"src": "assets/img/paisajes/bosque-interior.webp", "alt_es": "Interior de bosque nativo", "alt_en": "Inside a native forest"},
-    "plano_manihuales": {"src": "assets/img/proyectos/plano-horizontes-manihuales.jpg", "alt_es": "Plano aéreo de los cuatro lotes de Horizontes de Mañihuales", "alt_en": "Aerial plan of the four lots at Horizontes de Mañihuales"},
+    "plano_manihuales": {"src": "assets/img/proyectos/plano-horizontes-manihuales.jpg", "w": 760, "h": 1141, "alt_es": "Plano aéreo de los cuatro lotes de Horizontes de Mañihuales", "alt_en": "Aerial plan of the four lots at Horizontes de Mañihuales"},
     "paisaje_lago": {"src": "assets/img/proyectos/paisaje-lago.jpg", "alt_es": "Lago y cerros del sur de Chile con álamos", "alt_en": "Lake and hills in southern Chile with poplars"},
 }
 
