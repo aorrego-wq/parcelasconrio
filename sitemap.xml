@@ -46,6 +46,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/contact.html"/>
   </url>
   <url>
+    <loc>https://www.parcelasconrio.cl/simulador-credito-directo.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/simulador-credito-directo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/financing-simulator.html"/>
+  </url>
+  <url>
     <loc>https://www.parcelasconrio.cl/blog/</loc>
     <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/"/>
@@ -134,6 +139,11 @@
     <loc>https://www.parcelasconrio.cl/en/contact.html</loc>
     <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/contacto.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/contact.html"/>
+  </url>
+  <url>
+    <loc>https://www.parcelasconrio.cl/en/financing-simulator.html</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/simulador-credito-directo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/financing-simulator.html"/>
   </url>
   <url>
     <loc>https://www.parcelasconrio.cl/en/blog/</loc>

@@ -13,6 +13,10 @@ WA_TXT = "+56 9 7889 3044"
 MAIL = "contacto@parcelasconrio.cl"
 IG = "https://www.instagram.com/inmobiliariaelroble.cl/"
 FB = "https://www.facebook.com/Inmobiliariaelroble.cl/"
+TEL = "+56978893044"
+IG_SVG = '<svg aria-hidden="true" viewBox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1"></circle></svg>'
+FB_SVG = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14.2 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V10H8v3h2.8v8h3.4z"></path></svg>'
+
 OUT = os.path.join(os.path.dirname(__file__), "..")
 
 # Rutas equivalentes ES <-> EN (clave = id de página)
@@ -24,11 +28,13 @@ PATHS = {
     "contact": ("contacto.html", "en/contact.html"),
     "thanks": ("gracias.html", "en/thank-you.html"),
     "blog": ("blog/index.html", "en/blog/index.html"),
+    "simulator": ("simulador-credito-directo.html", "en/financing-simulator.html"),
 }
 
 NAV = [
     ("projects", "Proyectos", "Projects"),
-    ("patagonia", "Vivir la Patagonia", "Patagonia"),
+    ("simulator", "Simulador", "Financing"),
+    ("patagonia", "Patagonia", "Patagonia"),
     ("blog", "Blog", "Blog"),
     ("about", "Nosotros", "About us"),
     ("contact", "Contacto", "Contact"),
@@ -140,6 +146,9 @@ def header(lang, path, alt_path, current=None, solid=False):
       {''.join(links)}
     </nav>
     <div class="top-actions">
+      <a class="nav-social" href="{IG}" target="_blank" rel="noopener" aria-label="Instagram de Inmobiliaria El Roble" data-cta="header-instagram">{IG_SVG}</a>
+      <a class="nav-social" href="{FB}" target="_blank" rel="noopener" aria-label="Facebook de Inmobiliaria El Roble" data-cta="header-facebook">{FB_SVG}</a>
+      <a class="nav-phone" href="tel:{TEL}" data-cta="header-telefono">{WA_TXT}</a>
       <a class="lang" href="{other}" hreflang="{'en' if lang == 'es' else 'es'}" title="{lang_title}">{lang_label}</a>
       <a class="btn btn-sun" href="{wa_link(cta_txt)}" target="_blank" rel="noopener" data-cta="header-whatsapp">{ICONS['wa']}<span>WhatsApp</span></a>
       <button class="menu-btn" id="menuBtn" aria-label="{'Abrir menú' if lang == 'es' else 'Open menu'}" aria-expanded="false" aria-controls="nav">{ICONS['menu']}</button>
@@ -163,7 +172,7 @@ def footer(lang, path, blog_items=()):
       <div>
         <img src="{r}assets/img/marca/logo-claro.png" width="397" height="400" alt="El Roble Inmobiliaria" loading="lazy">
         <p>{L('Parcelas con rol propio junto a ríos del sur de Chile. Tu refugio en la Patagonia, con crédito directo.', 'Land plots with their own title next to rivers in southern Chile. Your refuge in Patagonia, with direct financing.')}</p>
-        <div class="social"><a href="{FB}" target="_blank" rel="noopener" aria-label="Facebook" data-cta="footer-facebook">{ICONS['fb']}</a><a href="{IG}" target="_blank" rel="noopener" aria-label="Instagram" data-cta="footer-instagram">{ICONS['ig']}</a></div>
+        <div class="social-links"><a class="social-link" href="{IG}" target="_blank" rel="noopener" aria-label="Instagram de Inmobiliaria El Roble" data-cta="footer-instagram">{IG_SVG}<span>Instagram</span></a><a class="social-link" href="{FB}" target="_blank" rel="noopener" aria-label="Facebook de Inmobiliaria El Roble" data-cta="footer-facebook">{FB_SVG}<span>Facebook</span></a></div>
       </div>
       <div><h4>{L('Sitio', 'Site')}</h4><ul>{nav}</ul></div>
       <div><h4>{L('Guías del blog', 'Travel guides')}</h4><ul>{posts}</ul></div>
@@ -195,6 +204,7 @@ def lead_form(lang, projects, preset="", title=None):
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
       <input type="hidden" name="idioma" value="{lang}">
+      <input type="hidden" name="simulacion" value="">
       <label>{L('Nombre', 'Name')}<input name="nombre" required autocomplete="name"></label>
       <div class="row2">
         <label>{L('Correo', 'Email')}<input name="email" type="email" required autocomplete="email"></label>

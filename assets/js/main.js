@@ -61,6 +61,45 @@
   var sel=document.querySelector('select[name="proyecto"]'),q=new URLSearchParams(location.search).get('proyecto');
   if(sel&&q){[].forEach.call(sel.options,function(o){if(o.value===q)sel.value=q})}
 
+
+  /* Simulador de crédito directo: pie y cuotas sin interés (precio ingresado por el visitante) */
+  var sim=document.getElementById('sim');
+  if(sim){
+    var money=function(n){return '$'+Math.round(n).toLocaleString('es-CL')};
+    var priceEl=document.getElementById('simPrice'),projEl=document.getElementById('simProject');
+    var qp=new URLSearchParams(location.search).get('proyecto');
+    if(qp){[].forEach.call(projEl.options,function(o){if(o.value===qp)projEl.value=qp})}
+    var t=lang==='en'
+      ?{down:'down',inst:'instalments',msg:'Hello, I simulated direct financing for {p}: price {t}, {pct}% down ({pie}) and {n} instalments of about {c}. Could you confirm availability and the price?'}
+      :{down:'de pie',inst:'cuotas',msg:'Hola, simulé el crédito directo para {p}: precio {t}, {pct}% de pie ({pie}) y {n} cuotas de aprox. {c}. ¿Me confirman disponibilidad y precio?'};
+    var calc=function(){
+      var price=parseInt((priceEl.value||'').replace(/\D/g,''),10)||0;
+      if(document.activeElement!==priceEl&&price) priceEl.value=price.toLocaleString('es-CL');
+      [].forEach.call(sim.querySelectorAll('[data-cuota]'),function(el){
+        var k=el.dataset.cuota.split('-'),pct=+k[0],n=+k[1];
+        el.textContent=price?money(price*(1-pct/100)/n)+(lang==='en'?'/mo':'/mes'):'—';
+      });
+      var sel=sim.querySelector('input[name=plan]:checked').value.split('-'),pct=+sel[0],n=+sel[1];
+      var pie=price*pct/100,saldo=price-pie,cuota=saldo/n;
+      document.getElementById('simCuota').textContent=price?money(cuota):'—';
+      document.getElementById('simPlan').textContent=n+' '+t.inst+' · '+pct+'% '+t.down;
+      document.getElementById('simTotal').textContent=price?money(price):'—';
+      document.getElementById('simPie').textContent=price?money(pie):'—';
+      document.getElementById('simSaldo').textContent=price?money(saldo):'—';
+      var txt=t.msg.replace('{p}',projEl.value).replace('{t}',money(price)).replace('{pct}',pct).replace('{pie}',money(pie)).replace('{n}',n).replace('{c}',money(cuota));
+      document.getElementById('simWa').href='https://wa.me/56978893044?text='+encodeURIComponent(price?txt:(lang==='en'?'Hello, I would like the price of '+projEl.value+' to simulate direct financing.':'Hola, quiero el precio de '+projEl.value+' para simular el crédito directo.'));
+      var hid=document.querySelector('form.lead-form input[name=simulacion]');
+      if(hid) hid.value=price?txt:'';
+      var fs=document.querySelector('form.lead-form select[name=proyecto]');
+      if(fs){[].forEach.call(fs.options,function(o){if(o.value===projEl.value)fs.value=projEl.value})}
+    };
+    priceEl.addEventListener('input',calc);
+    priceEl.addEventListener('blur',calc);
+    projEl.addEventListener('change',calc);
+    [].forEach.call(sim.querySelectorAll('input[name=plan]'),function(r){r.addEventListener('change',calc)});
+    calc();
+  }
+
   /* Formulario: correo por FormSubmit. Contacto obligatorio; promociones opcional (se informa "no"). */
   [].forEach.call(document.querySelectorAll('form.lead-form'),function(f){
     f.addEventListener('submit',function(e){

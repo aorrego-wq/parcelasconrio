@@ -6,7 +6,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from common import (DOMAIN, FB, ICONS, IG, MAIL, PATHS, WA, WA_TXT, esc, footer,  # noqa: E402
+from common import (DOMAIN, FB, FB_SVG, ICONS, IG, IG_SVG, MAIL, PATHS, WA, WA_TXT, esc, footer,  # noqa: E402
                   head, header, lead_form, pretty, rel, root, wa_link, write)
 from data import IMG, MANIHUALES_LOTS, PROJECTS  # noqa: E402
 from articles import ARTICLES  # noqa: E402
@@ -172,11 +172,12 @@ def home(lang):
 <section class="band">
   {img(path, 'lengas', lang)}
   <div class="wrap">
-    <span class="eyebrow light">{L(lang, 'Crédito directo', 'Direct financing')}</span>
+    <span class="eyebrow light">{L(lang, 'Crédito directo sin interés', 'Interest-free direct financing')}</span>
     <h2>{L(lang, 'Tu parcela en la Patagonia, sin pasar por el banco', 'Your plot in Patagonia, no bank required')}</h2>
     <p>{L(lang, 'Financiamiento directo con la inmobiliaria, parcelas con rol propio listas para escriturar y acompañamiento en todo el proceso.', 'Direct financing with the developer, plots with their own title ready for the deed, and support throughout the process.')}</p>
     <div class="hero-ctas">
       <a class="btn btn-sun" href="{wa_link(L(lang, 'Hola, quiero conocer las opciones de crédito directo para una parcela.', 'Hello, I would like to know the direct financing options for a plot.'))}" target="_blank" rel="noopener" data-cta="home-credito-whatsapp">{ICONS['wa']}{L(lang, 'Consultar financiamiento', 'Ask about financing')}</a>
+      <a class="btn btn-ghost" href="{rel(path, PATHS['simulator'][0 if lang == 'es' else 1])}" data-cta="home-credito-simulador">{L(lang, 'Simular mi crédito', 'Simulate my financing')}</a>
     </div>
   </div>
 </section>
@@ -191,22 +192,6 @@ def home(lang):
     {post_cards(path, lang, ARTICLES[:3])}
     </div>
     <p style="margin-top:34px"><a class="link-arrow" href="{rel(path, PATHS['blog'][0 if lang == 'es' else 1])}">{L(lang, 'Ver todas las guías', 'See all guides')} {ICONS['arrow']}</a></p>
-  </div>
-</section>
-
-<section class="follow">
-  <div class="wrap">
-    <div class="follow-in reveal">
-      <div>
-        <span class="eyebrow">{L(lang, 'Redes sociales', 'Social media')}</span>
-        <h2>{L(lang, 'Síguenos y vive el sur cada semana', 'Follow us and see the south every week')}</h2>
-        <p class="lead">{L(lang, 'Videos de los terrenos, nuevos proyectos, parcelas disponibles y paisajes de cada estación.', 'Videos of the land, new projects, available plots and landscapes from every season.')}</p>
-      </div>
-      <div class="follow-btns">
-        <a class="sbtn fb" href="{FB}" target="_blank" rel="noopener" data-cta="home-facebook">{ICONS['fb']}<span><b>Facebook</b>Inmobiliaria El Roble</span></a>
-        <a class="sbtn ig" href="{IG}" target="_blank" rel="noopener" data-cta="home-instagram">{ICONS['ig']}<span><b>Instagram</b>@inmobiliariaelroble.cl</span></a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -249,8 +234,10 @@ def contact_section(path, lang, preset=""):
       <div class="contact-list">
         <div><span>WhatsApp</span><a href="https://wa.me/{WA}" target="_blank" rel="noopener" data-cta="contacto-whatsapp">{WA_TXT}</a></div>
         <div><span>{L(lang, 'Correo', 'Email')}</span><a href="mailto:{MAIL}">{MAIL}</a></div>
-        <div><span>Instagram</span><a href="{IG}" target="_blank" rel="noopener">@inmobiliariaelroble.cl</a></div>
-        <div><span>Facebook</span><a href="{FB}" target="_blank" rel="noopener">Inmobiliaria El Roble</a></div>
+      </div>
+      <div class="contact-social">
+        <span>{L(lang, 'También puedes seguirnos en', 'You can also follow us on')}</span>
+        <div class="social-links" aria-label="{L(lang, 'Redes sociales', 'Social media')}"><a class="social-link" href="{IG}" target="_blank" rel="noopener" aria-label="Instagram de Inmobiliaria El Roble" data-cta="contacto-instagram">{IG_SVG}<span>Instagram</span></a><a class="social-link" href="{FB}" target="_blank" rel="noopener" aria-label="Facebook de Inmobiliaria El Roble" data-cta="contacto-facebook">{FB_SVG}<span>Facebook</span></a></div>
       </div>
     </div>
     {lead_form(lang, PROJECT_NAMES, preset)}
@@ -337,7 +324,7 @@ def project_page(p, lang):
     <p class="lead">{p['short_' + lang]}</p>
     <div class="hero-ctas">
       <a class="btn btn-sun" href="{wa_link(L(lang, 'Hola, me interesa ' + p['name'] + '. ¿Me envían precios y disponibilidad?', 'Hello, I am interested in ' + p['name'] + '. Could you send me prices and availability?'))}" target="_blank" rel="noopener" data-cta="proyecto-{p['slug']}-whatsapp">{ICONS['wa']}{L(lang, 'Pedir precios', 'Ask for prices')}</a>
-      <a class="btn btn-ghost" href="#contacto">{L(lang, 'Agendar visita', 'Book a visit')}</a>
+      <a class="btn btn-ghost" href="{rel(path, PATHS['simulator'][0 if lang == 'es' else 1])}?proyecto={p['name'].replace(' ', '+')}" data-cta="proyecto-{p['slug']}-simulador">{L(lang, 'Simular crédito', 'Simulate financing')}</a>
     </div>
   </div>
   {'' if p.get('real') else '<span class="photo-credit">' + L(lang, 'Imagen referencial del territorio', 'Illustrative image of the region') + '</span>'}
@@ -462,6 +449,57 @@ def article(a, lang):
     page(lang, (es_p, en_p), a["seo_" + lang], a["desc_" + lang], IMG[a["img"]]["src"], body, current="blog", schema=schema)
 
 
+
+# ---------------------------------------------------------------- Simulador
+PLANS = [(30, 18), (40, 24), (50, 36)]
+
+
+def simulator(lang):
+    def body(path):
+        opts = "".join(f'<option value="{esc(n)}">{esc(n)}</option>' for n in PROJECT_NAMES)
+        plans = "".join(f"""<label class="plan"><input type="radio" name="plan" value="{pie}-{n}"{' checked' if i == 0 else ''}>
+          <span class="plan-in"><b>{pie}% {L(lang, 'de pie', 'down')}</b><span>{n} {L(lang, 'cuotas', 'instalments')}</span><em data-cuota="{pie}-{n}">—</em></span></label>""" for i, (pie, n) in enumerate(PLANS))
+        return f"""<section class="page-hero" style="min-height:56svh">
+  {img(path, 'lengas', lang, eager=True)}
+  <div class="wrap">
+    <nav class="crumbs"><a href="{rel(path, PATHS['home'][0 if lang == 'es' else 1])}">{L(lang, 'Inicio', 'Home')}</a><span>/</span>{L(lang, 'Simulador', 'Financing')}</nav>
+    <span class="eyebrow light">{L(lang, 'Crédito directo sin interés', 'Interest-free direct financing')}</span>
+    <h1>{L(lang, 'Simula tu plan de pago', 'Simulate your payment plan')}</h1>
+    <p class="lead">{L(lang, 'Elige el proyecto, escribe el precio de la parcela y compara las tres modalidades de crédito directo con la inmobiliaria.', 'Choose the project, enter the plot price and compare the three direct financing options with the developer.')}</p>
+  </div>
+</section>
+<section class="sim">
+  <div class="wrap sim-grid">
+    <div class="sim-box reveal" id="sim" data-lang="{lang}">
+      <div class="row2">
+        <label>{L(lang, 'Proyecto', 'Project')}<select id="simProject">{opts}</select></label>
+        <label>{L(lang, 'Precio de la parcela (CLP)', 'Plot price (CLP)')}<input id="simPrice" inputmode="numeric" autocomplete="off" placeholder="{L(lang, 'Ej: 25.000.000', 'e.g. 25,000,000')}"></label>
+      </div>
+      <p class="sim-help">{L(lang, '¿No tienes el precio? Pídelo por WhatsApp y vuelve a simular.', "Don't have the price? Ask us on WhatsApp and come back to simulate.")} <a href="https://wa.me/{WA}" target="_blank" rel="noopener">WhatsApp {WA_TXT}</a></p>
+      <fieldset class="plans"><legend>{L(lang, 'Modalidad de crédito directo', 'Direct financing option')}</legend>{plans}</fieldset>
+    </div>
+    <aside class="sim-result reveal" aria-live="polite">
+      <span class="eyebrow light">{L(lang, 'Tu simulación', 'Your simulation')}</span>
+      <p class="sim-label">{L(lang, 'Cuota mensual estimada', 'Estimated monthly instalment')}</p>
+      <p class="sim-big" id="simCuota">—</p>
+      <p class="sim-plan" id="simPlan"></p>
+      <dl>
+        <div><dt>{L(lang, 'Precio', 'Price')}</dt><dd id="simTotal">—</dd></div>
+        <div><dt>{L(lang, 'Pie inicial', 'Down payment')}</dt><dd id="simPie">—</dd></div>
+        <div><dt>{L(lang, 'Saldo a financiar', 'Balance financed')}</dt><dd id="simSaldo">—</dd></div>
+      </dl>
+      <a class="btn btn-sun" id="simWa" href="https://wa.me/{WA}" target="_blank" rel="noopener" data-cta="simulador-whatsapp">{ICONS['wa']}{L(lang, 'Enviar simulación por WhatsApp', 'Send simulation on WhatsApp')}</a>
+      <p class="sim-note">{L(lang, 'Simulación referencial en pesos chilenos. Las cuotas se expresan en UF y no tienen intereses. Precios, condiciones y disponibilidad sujetos a confirmación comercial.', 'Illustrative simulation in Chilean pesos. Instalments are set in UF (Chile’s inflation-indexed unit) with no interest. Prices, terms and availability subject to commercial confirmation.')}</p>
+    </aside>
+  </div>
+</section>
+{contact_section(path, lang)}"""
+    page(lang, "simulator", L(lang, "Simulador de crédito directo para parcelas | Parcelas con Río", "Direct financing simulator for land plots | Parcelas con Río"),
+         L(lang, "Calcula el pie y la cuota de tu parcela con crédito directo sin interés: 30% de pie en 18 cuotas, 40% en 24 o 50% en 36.",
+           "Calculate the down payment and instalment for your plot with interest-free direct financing: 30% down over 18 months, 40% over 24 or 50% over 36."),
+         IMG["lengas"]["src"], body, current="simulator")
+
+
 def sitemap():
     rows = []
     seen = set()
@@ -490,6 +528,7 @@ def main():
         content.patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, contact_section)
         content.about(lang, page, img, L, rel, PATHS, IMG)
         content.contact(lang, page, img, L, contact_section)
+        simulator(lang)
         thanks(lang)
         blog_index(lang)
         for a in ARTICLES:
