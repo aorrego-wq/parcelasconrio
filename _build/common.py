@@ -14,10 +14,16 @@ MAIL = "contacto@parcelasconrio.cl"
 IG = "https://www.instagram.com/inmobiliariaelroble.cl/"
 FB = "https://www.facebook.com/Inmobiliariaelroble.cl/"
 TEL = "+56978893044"
-IG_SVG = '<svg aria-hidden="true" viewBox="0 0 24 24"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1"></circle></svg>'
-FB_SVG = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M14.2 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V10H8v3h2.8v8h3.4z"></path></svg>'
+IG_SVG = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1"></circle></svg>'
+FB_SVG = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V10H8v3h2.8v8h3.4z"></path></svg>'
 
 OUT = os.path.join(os.path.dirname(__file__), "..")
+
+
+def asset_version(rel_path):
+    import hashlib
+    with open(os.path.join(OUT, rel_path), "rb") as fh:
+        return hashlib.md5(fh.read()).hexdigest()[:8]
 
 # Rutas equivalentes ES <-> EN (clave = id de página)
 PATHS = {
@@ -115,7 +121,7 @@ def head(lang, path, alt_path, title, desc, image, schema=None, noindex=False):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700;800&display=swap">
-<link rel="stylesheet" href="{r}assets/css/styles.css">
+<link rel="stylesheet" href="{r}assets/css/styles.css?v={asset_version('assets/css/styles.css')}">
 {ld}</head>
 <body>
 <a class="skip" href="#contenido">{'Saltar al contenido' if lang == 'es' else 'Skip to content'}</a>
@@ -187,7 +193,7 @@ def footer(lang, path, blog_items=()):
   </div>
 </footer>
 <a class="wa-float" href="https://wa.me/{WA}" target="_blank" rel="noopener" aria-label="WhatsApp" data-cta="flotante-whatsapp">{ICONS['wa']}</a>
-<script src="{r}assets/js/main.js" defer></script>
+<script src="{r}assets/js/main.js?v={asset_version('assets/js/main.js')}" defer></script>
 </body>
 </html>
 """
