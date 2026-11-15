@@ -24,6 +24,7 @@ def img(path, key, lang, cls="", eager=False, w=1200, h=800):
     alt = m.get(f"alt_{lang}", "")
     load = 'fetchpriority="high"' if eager else 'loading="lazy"'
     c = f' class="{cls}"' if cls else ""
+    w, h = m.get("w", w), m.get("h", h)
     return f'<img{c} src="{root(path)}{m["src"]}" width="{w}" height="{h}" alt="{esc(alt)}" {load} decoding="async">'
 
 
@@ -64,7 +65,7 @@ def project_cards(path, lang, only_available=False):
         if only_available and p["sold"]:
             continue
         badge_cls = "badge sold" if p["sold"] else "badge"
-        inner = f"""<figure>{img(path, p['img'], lang)}<span class="{badge_cls}">{p['badge_' + lang]}</span><span class="ref">{L(lang, 'Imagen referencial', 'Illustrative image')}</span></figure>
+        inner = f"""<figure>{img(path, p['img'], lang)}<span class="{badge_cls}">{p['badge_' + lang]}</span>{'' if p.get('real') else '<span class="ref">' + L(lang, 'Imagen referencial', 'Illustrative image') + '</span>'}</figure>
       <div class="body">
         <span class="region">{p['region_' + lang]}</span>
         <h3>{p['name']}</h3>
@@ -323,15 +324,38 @@ def project_page(p, lang):
       <a class="btn btn-ghost" href="#contacto">{L(lang, 'Agendar visita', 'Book a visit')}</a>
     </div>
   </div>
-  <span class="photo-credit">{L(lang, 'Imagen referencial del territorio', 'Illustrative image of the region')}</span>
+  {'' if p.get('real') else '<span class="photo-credit">' + L(lang, 'Imagen referencial del territorio', 'Illustrative image of the region') + '</span>'}
 </section>
 {story}
+{gallery_section(path, p, lang)}
 {extra}
 {attrs_section(path, lang)}
 {contact_section(path, lang, p['name'])}"""
     page(lang, (es_p, en_p), f"{p['name']} · {L(lang, 'Parcelas en venta', 'Land for sale')} | Parcelas con Río",
          f"{p['short_' + lang]} {L(lang, 'Rol propio y crédito directo.', 'Own title and direct financing.')}",
          IMG[p["img"]]["src"], body, current="projects")
+
+
+def gallery_section(path, p, lang):
+    if not p.get("gallery"):
+        return ""
+    figs = "".join(f'<figure class="g-item reveal">{img(path, k, lang)}</figure>' for k in p["gallery"])
+    video = ""
+    if p.get("video"):
+        poster = root(path) + IMG[p["gallery"][0]]["src"]
+        video = f"""<figure class="g-video reveal"><video controls playsinline preload="none" poster="{poster}" src="{root(path)}{p['video']}"></video><figcaption>{L(lang, 'Video del proyecto', 'Project video')}</figcaption></figure>"""
+    extra = ""
+    if p.get("gallery2"):
+        figs2 = "".join(f'<figure class="g-item reveal">{img(path, k, lang)}</figure>' for k in p["gallery2"])
+        extra = f"""<div class="section-head" style="margin:56px 0 24px"><span class="eyebrow">{L(lang, 'Entorno', 'Surroundings')}</span><h3 style="font-size:1.8rem">{L(lang, 'Paisajes de la Región del Maule', 'Landscapes of the Maule Region')}</h3></div>
+    <div class="gallery g3">{figs2}</div>"""
+    return f"""<section class="gallery-sec">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">{L(lang, 'Galería', 'Gallery')}</span><h2>{L(lang, 'Así es el proyecto', 'See the project')}</h2></div>
+    <div class="gallery{' with-video' if video else ''}">{video}{figs}</div>
+    {extra}
+  </div>
+</section>"""
 
 
 PROJECT_STORY = {}  # se completa en content.py

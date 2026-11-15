@@ -21,10 +21,10 @@ def _story(lang, eyebrow, title, paras, img_key=None):
 PROJECT_STORY = {
     "horizontes-de-manihuales": {
         "es": _story("es", "El proyecto", "Despierta frente al <em>río Mañihuales</em>, en el corazón verde de Aysén.", [
-            "Horizontes de Mañihuales son cuatro parcelas de entre 0,53 y 1 hectárea con frente al río, rodeadas de praderas y bosque nativo, en la Región de Aysén.",
+            "Horizontes de Mañihuales son cuatro parcelas de entre 0,53 y 1 hectárea con frente al río, en Villa Mañihuales, Región de Aysén, rodeadas de bosque nativo.",
             "Un lugar para construir tu casa, una cabaña para escapar o simplemente guardar un pedazo de Patagonia: con acceso por servidumbre de tránsito, factibilidad eléctrica, rol propio y crédito directo."]),
         "en": _story("en", "The project", "Wake up facing the <em>Mañihuales River</em>, in the green heart of Aysén.", [
-            "Horizontes de Mañihuales offers four plots of 0.53 to 1 hectare facing the river, surrounded by meadows and native forest, in the Aysén Region.",
+            "Horizontes de Mañihuales offers four plots of 0.53 to 1 hectare facing the river in Villa Mañihuales, Aysén Region, surrounded by native forest.",
             "A place to build your home, a getaway cabin or simply keep your own piece of Patagonia: right-of-way access, electricity feasibility, own title and direct financing."]),
     },
     "don-guillermo": {
@@ -44,11 +44,11 @@ PROJECT_STORY = {
             "57% of the plots are already sold. Ask for current availability, sizes and prices on WhatsApp or using the form."]),
     },
     "dona-cecilia": {
-        "es": _story("es", "El proyecto", "Las <em>últimas parcelas</em> en la Región del Maule.", [
-            "Parcelación Doña Cecilia está en la Región del Maule, en la zona central sur de Chile.",
+        "es": _story("es", "El proyecto", "Las <em>últimas parcelas</em> en San Clemente, Región del Maule.", [
+            "Parcelación Doña Cecilia está en la comuna de San Clemente, en la Región del Maule: praderas abiertas, caminos de ripio entre los terrenos y cerros en el horizonte.",
             "Quedan las últimas 6 parcelas. Escríbenos para conocer su ubicación exacta, superficies, precios y opciones de crédito directo."]),
-        "en": _story("en", "The project", "The <em>last plots</em> in the Maule Region.", [
-            "Parcelación Doña Cecilia is in the Maule Region, in south-central Chile.",
+        "en": _story("en", "The project", "The <em>last plots</em> in San Clemente, Maule Region.", [
+            "Parcelación Doña Cecilia is in the San Clemente district of the Maule Region: open meadows, gravel roads between the plots and hills on the horizon.",
             "Only the last 6 plots remain. Write to us for the exact location, sizes, prices and direct financing options."]),
     },
 }

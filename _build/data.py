@@ -34,7 +34,9 @@ PROJECTS = [
         "status_es": "3 de 4 disponibles", "status_en": "3 of 4 available", "badge_es": "Nuevo", "badge_en": "New", "sold": False, "pct": 25,
         "short_es": "4 parcelas de 0,53 a 1 ha frente al río Mañihuales, con acceso por servidumbre y factibilidad eléctrica.",
         "short_en": "4 plots of 0.53 to 1 ha facing the Mañihuales River, with right-of-way access and electricity feasibility.",
-        "img": "valle", "detail": True,
+        "img": "rio_manihuales_meandro", "real": True, "detail": True,
+        "gallery": ["rio_manihuales_meandro", "rio_manihuales_ribera", "manihuales_entorno_verde", "manihuales_vista_horizontal"],
+        "video": "assets/video/proyectos/horizontes-de-manihuales.mp4",
     },
     {
         "slug": "don-guillermo", "name": "Parcelas Don Guillermo", "r": "XI",
@@ -54,11 +56,13 @@ PROJECTS = [
     },
     {
         "slug": "dona-cecilia", "name": "Parcelación Doña Cecilia", "r": "VII",
-        "region_es": "Región del Maule", "region_en": "Maule Region",
+        "region_es": "Región del Maule · San Clemente", "region_en": "Maule Region · San Clemente",
         "status_es": "Últimas 6 parcelas", "status_en": "Last 6 plots", "badge_es": "Últimas", "badge_en": "Last plots", "sold": False, "pct": 85,
-        "short_es": "Últimas parcelas disponibles en la Región del Maule.",
-        "short_en": "Last plots available in the Maule Region.",
-        "img": "pradera", "detail": True,
+        "short_es": "Últimas parcelas entre praderas y cerros en San Clemente, Región del Maule.",
+        "short_en": "Last plots among meadows and hills in San Clemente, Maule Region.",
+        "img": "dona_cecilia_panorama_rural", "real": True, "detail": True,
+        "gallery": ["dona_cecilia_panorama_rural", "dona_cecilia_camino_de_acceso", "dona_cecilia_camino_y_caballos", "dona_cecilia_campo_y_cerros", "dona_cecilia_terrenos_planos", "dona_cecilia_valle_aereo", "dona_cecilia_camino_aereo", "dona_cecilia_trazado_aereo"],
+        "gallery2": ["maule_cascada_y_poza", "maule_embalse_vista_aerea", "maule_embalse_y_montanas"],
     },
     {
         "slug": "altos-de-villa-medina", "name": "Altos de Villa Medina", "r": "XI",
@@ -66,7 +70,7 @@ PROJECTS = [
         "status_es": "100% vendido", "status_en": "100% sold", "badge_es": "Vendido", "badge_en": "Sold out", "sold": True, "pct": 100,
         "short_es": "A menos de 20 minutos de Coyhaique y a 1 km de la Carretera Austral.",
         "short_en": "Less than 20 minutes from Coyhaique and 1 km from the Carretera Austral.",
-        "img": "salto", "detail": False,
+        "img": "villa_medina_valle_aereo", "real": True, "detail": False,
     },
 ]
 
@@ -145,3 +149,32 @@ for _k, _en in {
     "cinchao1": "Cerro Cinchao with some snow, Coyhaique National Reserve",
 }.items():
     IMG[_k]["alt_en"] = _en
+
+# Fotos reales de proyectos de Inmobiliaria El Roble (carpeta Fotos_proyectos_optimizadas_web)
+IMG.update({
+    'manihuales_entorno_verde': {"src": "assets/img/proyectos/manihuales/manihuales-entorno-verde.webp", "w": 900, "h": 1600, "alt_es": 'Terreno verde con vegetación en el entorno de Mañihuales', "alt_en": 'Green land with vegetation at Horizontes de Mañihuales'},
+    'manihuales_vista_horizontal': {"src": "assets/img/proyectos/manihuales/manihuales-vista-horizontal.webp", "w": 900, "h": 1600, "alt_es": 'Vista horizontal del entorno fluvial de Horizontes de Mañihuales', "alt_en": 'River surroundings of Horizontes de Mañihuales'},
+    'rio_manihuales_meandro': {"src": "assets/img/proyectos/manihuales/rio-manihuales-meandro.webp", "w": 900, "h": 1600, "alt_es": 'Meandro del río Mañihuales visto desde el aire', "alt_en": 'Aerial view of a bend in the Mañihuales River'},
+    'rio_manihuales_ribera': {"src": "assets/img/proyectos/manihuales/rio-manihuales-ribera.webp", "w": 900, "h": 1600, "alt_es": 'Ribera y bancos de grava del río Mañihuales', "alt_en": 'Riverbank and gravel bars of the Mañihuales River'},
+    'dona_cecilia_panorama_rural': {"src": "assets/img/proyectos/dona-cecilia/dona-cecilia-panorama-rural.webp", "w": 1422, "h": 800, "alt_es": 'Panorama rural con praderas y montañas', "alt_en": 'Rural panorama with meadows and mountains'},
+    'dona_cecilia_camino_de_acceso': {"src": "assets/img/proyectos/dona-cecilia/dona-cecilia-camino-de-acceso.webp", "w": 1422, "h": 800, "alt_es": 'Camino de ripio entre terrenos del proyecto', "alt_en": 'Gravel road between the project plots'},
+    'dona_cecilia_camino_y_caballos': {"src": "assets/img/proyectos/dona-cecilia/dona-cecilia-camino-y-caballos.webp", "w": 1422, "h": 800, "alt_es": 'Camino rural con caballos a un costado', "alt_en": 'Country road with horses alongside'},
+    'dona_cecilia_campo_y_cerros': {"src": "assets/img/proyectos/dona-cecilia/dona-cecilia-campo-y-cerros.webp", "w": 1422, "h": 800, "alt_es": 'Campo abierto con cerros y árboles al fondo', "alt_en": 'Open field with hills and trees'},
+    'dona_cecilia_terrenos_planos': {"src": "assets/img/proyectos/dona-cecilia/dona-cecilia-terrenos-planos.webp", "w": 1422, "h": 800, "alt_es": 'Pradera abierta con arbolado lateral', "alt_en": 'Open meadow lined with trees'},
+    'dona_cecilia_camino_aereo': {"src": "assets/img/proyectos/dona-cecilia/dona-cecilia-camino-aereo.webp", "w": 1422, "h": 800, "alt_es": 'Camino interior visto desde el aire entre praderas', "alt_en": 'Aerial view of the internal road between meadows'},
+    'dona_cecilia_trazado_aereo': {"src": "assets/img/proyectos/dona-cecilia/dona-cecilia-trazado-aereo.webp", "w": 1422, "h": 800, "alt_es": 'Vista aérea sobre el trazado del camino y los terrenos', "alt_en": 'Aerial view of the road layout and plots'},
+    'dona_cecilia_valle_aereo': {"src": "assets/img/proyectos/dona-cecilia/dona-cecilia-valle-aereo.webp", "w": 1422, "h": 800, "alt_es": 'Vista aérea del proyecto y campos de San Clemente', "alt_en": 'Aerial view of the project and San Clemente fields'},
+    'maule_cascada_y_poza': {"src": "assets/img/proyectos/dona-cecilia/maule-cascada-y-poza.webp", "w": 1203, "h": 799, "alt_es": 'Cascada que cae hacia una poza entre paredes rocosas (entorno regional del Maule)', "alt_en": 'Waterfall into a pool between rock walls, Maule Region'},
+    'maule_embalse_vista_aerea': {"src": "assets/img/proyectos/dona-cecilia/maule-embalse-vista-aerea.webp", "w": 1422, "h": 800, "alt_es": 'Vista aérea de una península arbolada rodeada de agua (entorno regional del Maule)', "alt_en": 'Aerial view of a wooded peninsula surrounded by water, Maule Region'},
+    'maule_embalse_y_montanas': {"src": "assets/img/proyectos/dona-cecilia/maule-embalse-y-montanas.webp", "w": 1422, "h": 800, "alt_es": 'Pasarela junto al agua con montañas al fondo (entorno regional del Maule)', "alt_en": 'Walkway by the water with mountains, Maule Region'},
+    'villa_medina_valle_aereo': {"src": "assets/img/proyectos/villa-medina/villa-medina-valle-aereo.webp", "w": 1920, "h": 1080, "alt_es": 'Vista aérea del valle y de los caminos entre parcelas', "alt_en": 'Aerial view of the valley and roads between plots'},
+    'villa_medina_cabana_aerea': {"src": "assets/img/proyectos/villa-medina/villa-medina-cabana-aerea.webp", "w": 1920, "h": 1080, "alt_es": 'Vista aérea de una cabaña sobre una pradera', "alt_en": 'Aerial view of a cabin on a meadow'},
+    'villa_medina_cabana_y_valle': {"src": "assets/img/proyectos/villa-medina/villa-medina-cabana-y-valle.webp", "w": 1920, "h": 1080, "alt_es": 'Cabaña en primer plano con un valle abierto al fondo', "alt_en": 'Cabin with an open valley behind'},
+    'villa_medina_rio_y_valle': {"src": "assets/img/proyectos/villa-medina/villa-medina-rio-y-valle.webp", "w": 1920, "h": 1080, "alt_es": 'Río que atraviesa un valle al pie de las montañas', "alt_en": 'River crossing a valley at the foot of the mountains'},
+    'villa_medina_relieve_y_valle': {"src": "assets/img/proyectos/villa-medina/villa-medina-relieve-y-valle.webp", "w": 1920, "h": 1080, "alt_es": 'Laderas y caminos rurales vistos desde el aire', "alt_en": 'Slopes and rural roads from the air'},
+    'villa_medina_pradera_y_cerros': {"src": "assets/img/proyectos/villa-medina/villa-medina-pradera-y-cerros.webp", "w": 1920, "h": 1080, "alt_es": 'Pradera seca y cordón de cerros bajo cielo azul', "alt_en": 'Dry meadow and hills under blue sky'},
+    'villa_medina_cascada': {"src": "assets/img/proyectos/villa-medina/villa-medina-cascada.webp", "w": 1920, "h": 1080, "alt_es": 'Cascada entre laderas verdes del entorno del proyecto', "alt_en": 'Waterfall between green slopes near the project'},
+    'villa_medina_bosque_con_nieve': {"src": "assets/img/proyectos/villa-medina/villa-medina-bosque-con-nieve.webp", "w": 1920, "h": 1080, "alt_es": 'Bosque y sendero nevados en el entorno del proyecto', "alt_en": 'Snowy forest and trail near the project'},
+    'lago_frio_pesca_embarcacion': {"src": "assets/img/proyectos/pesca/lago-frio-pesca-embarcacion.webp", "w": 1920, "h": 1080, "alt_es": 'Dos personas pescando desde una embarcación en un lago de Aysén', "alt_en": 'Two people fishing from a boat on a lake in Aysén'},
+    'lago_frio_pesca_panorama': {"src": "assets/img/proyectos/pesca/lago-frio-pesca-panorama.webp", "w": 1920, "h": 1080, "alt_es": 'Embarcación de pesca sobre las aguas tranquilas de Aysén', "alt_en": 'Fishing boat on the calm waters of a lake in Aysén'},
+})

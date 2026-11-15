@@ -56,7 +56,7 @@ ARTICLES = [
         "hub_es": "A 29 km de Coyhaique, el centro de ski El Fraile ofrece nieve entre bosques de lenga, en general de junio a septiembre. Para esquiar o caminar con raquetas sin salir de la región.", "hub_en": "Just 29 km from Coyhaique, the El Fraile ski area offers snow among lenga forests, usually from June to September. Ski or go snowshoeing without leaving the region.",
     },
     {
-        "key": "pesca", "slug_es": "pesca-con-mosca-en-aysen", "slug_en": "fly-fishing-aysen-patagonia", "img": "simpson2",
+        "key": "pesca", "slug_es": "pesca-con-mosca-en-aysen", "slug_en": "fly-fishing-aysen-patagonia", "img": "lago_frio_pesca_embarcacion",
         "cat_es": "Pesca", "cat_en": "Fishing",
         "title_es": "Pesca con mosca en Aysén: ríos, temporada y licencia", "title_en": "Fly fishing in Aysén: rivers, season and licence",
         "seo_es": "Pesca con mosca en Aysén: mejores ríos y temporada | Parcelas con Río", "seo_en": "Fly fishing in Aysén, Chilean Patagonia: rivers and season | Parcelas con Río",
