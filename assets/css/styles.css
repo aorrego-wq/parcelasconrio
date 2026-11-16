@@ -500,3 +500,6 @@ body.scrolled .wa-float{opacity:1;transform:none;pointer-events:auto}
 .avail span{display:block;margin-top:6px;font-size:.9rem;color:var(--muted)}
 .legal-note{background:var(--glacier-50);border-left:4px solid var(--glacier);padding:14px 18px;border-radius:0 12px 12px 0;color:var(--night)!important;font-weight:500}
 @media (max-width:860px){.pay-list,.avail{grid-template-columns:1fr}.map-box{aspect-ratio:4/3}}
+.plan-sec{padding-top:0}
+.plan-wide{margin:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.plan-wide img{width:100%;height:auto}

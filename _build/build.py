@@ -372,6 +372,14 @@ def project_page(p, lang):
             extra = manihuales_section(path, lang)
         elif p.get("masterplan"):
             extra = rofuco_section(path, p, lang)
+        if p.get("plan"):
+            extra += f"""<section class="plan-sec">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">{L(lang, 'Plano del proyecto', 'Project plan')}</span><h2>{L(lang, 'Queda una sola parcela: la B11', 'One plot left: B11')}</h2>
+      <p class="lead">{L(lang, 'En rojo, las parcelas vendidas; en blanco, la B11, de 9.500 m², única disponible.', 'Sold plots in red; B11, 9,500 m², the only one available, in white.')}</p></div>
+    <figure class="plan-wide">{img(path, p['plan'], lang)}</figure>
+  </div>
+</section>"""
         sim_btn = ""
         if p.get("sim"):
             sim_btn = f"""<a class="btn btn-ghost" href="{rel(path, PATHS['simulator'][0 if lang == 'es' else 1])}?proyecto={p['name'].replace(' ', '+')}" data-cta="proyecto-{p['slug']}-simulador">{L(lang, 'Simular crédito', 'Simulate financing')}</a>"""

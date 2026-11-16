@@ -47,6 +47,7 @@ PROJECTS = [
         "short_en": "Facing the Emperador Guillermo River, right on the Carretera Austral. Only plot B11 (9,500 m²) is left.",
         "img": "carretera2", "detail": True,
         "map": (-45.2840594, -72.1713018),
+        "plan": "plano_don_guillermo",
     },
     {
         "slug": "rofuco-bajo", "name": "Parcelas Rofuco Bajo", "r": "XIV",
@@ -229,3 +230,7 @@ VIDEOS = [
     {"file": "lago-elizalde-orilla", "poster": "v_elizalde_orilla", "art": "elizalde", "es": "Orillas del Lago Elizalde", "en": "Lake Elizalde shoreline"},
     {"file": "puerto-ibanez-muelle", "poster": "v_ibanez_muelle", "art": "ibanez", "es": "Antiguo muelle de Puerto Ibáñez", "en": "Old pier at Puerto Ibáñez"},
 ]
+
+IMG["plano_don_guillermo"] = {"src": "assets/img/proyectos/plano-don-guillermo.jpg", "w": 1600, "h": 900,
+    "alt_es": "Masterplan de Parcelas Don Guillermo junto al río Emperador Guillermo: todas las parcelas vendidas salvo la B11",
+    "alt_en": "Parcelas Don Guillermo masterplan by the Emperador Guillermo River: all plots sold except B11"}
