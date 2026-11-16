@@ -21,35 +21,35 @@ def _story(lang, eyebrow, title, paras, img_key=None):
 PROJECT_STORY = {
     "horizontes-de-manihuales": {
         "es": _story("es", "El proyecto", "Despierta frente al <em>río Mañihuales</em>, en el corazón verde de Aysén.", [
-            "Horizontes de Mañihuales son cuatro parcelas de entre 0,53 y 1 hectárea con frente al río, en Villa Mañihuales, Región de Aysén, rodeadas de bosque nativo.",
-            "Un lugar para construir tu casa, una cabaña para escapar o simplemente guardar un pedazo de Patagonia: con acceso por servidumbre de tránsito, factibilidad eléctrica, rol propio y crédito directo."]),
+            "Horizontes de Mañihuales son cuatro parcelas de entre 0,53 y 1 hectárea frente al río Mañihuales, con acceso por camino público, hermosos árboles nativos y un entorno natural de gran belleza.",
+            "Está a 1 hora y 10 minutos al norte de Coyhaique y a 10 minutos de Villa Mañihuales. El proyecto está en venta en verde mientras se obtiene la aprobación del SAG."]),
         "en": _story("en", "The project", "Wake up facing the <em>Mañihuales River</em>, in the green heart of Aysén.", [
-            "Horizontes de Mañihuales offers four plots of 0.53 to 1 hectare facing the river in Villa Mañihuales, Aysén Region, surrounded by native forest.",
-            "A place to build your home, a getaway cabin or simply keep your own piece of Patagonia: right-of-way access, electricity feasibility, own title and direct financing."]),
+            "Horizontes de Mañihuales offers four plots of 0.53 to 1 hectare facing the Mañihuales River, with public road access, beautiful native trees and stunning natural surroundings.",
+            "It is 1 hour 10 minutes north of Coyhaique and 10 minutes from Villa Mañihuales. The project is sold off-plan while SAG approval is obtained."]),
     },
     "don-guillermo": {
         "es": _story("es", "El proyecto", "Frente al <em>río Emperador Guillermo</em>, sobre la mítica Carretera Austral.", [
             "Parcelas Don Guillermo está junto al río Emperador Guillermo, en plena Carretera Austral, una de las rutas escénicas más famosas del mundo.",
-            "Queda una sola parcela disponible. Escríbenos para conocer su superficie, precio y opciones de crédito directo."]),
+            "La única parcela disponible es la B11, de 9.500 m². Escríbenos para conocer su precio y formas de pago."]),
         "en": _story("en", "The project", "Facing the <em>Emperador Guillermo River</em>, on the legendary Carretera Austral.", [
             "Parcelas Don Guillermo sits next to the Emperador Guillermo River, right on the Carretera Austral, one of the world's most famous scenic routes.",
-            "Only one plot is left. Write to us for its size, price and direct financing options."]),
+            "The only plot left is B11, with 9,500 m². Write to us for its price and payment options."]),
     },
     "rofuco-bajo": {
         "es": _story("es", "El proyecto", "Naturaleza del sur en la <em>Región de Los Ríos</em>.", [
             "Parcelas Rofuco Bajo está en la Región de Los Ríos, tierra de bosques húmedos, ríos y lagos del sur de Chile.",
-            "El proyecto ya vendió el 57% de sus parcelas. Pide la disponibilidad actual, superficies y precios por WhatsApp o con el formulario."]),
+            "Ya se vendieron 38 de sus 60 parcelas y quedan 22 disponibles, con precios desde $24.500.000 hasta $28.000.000. Consulta precios por WhatsApp o con el formulario, y recorre el proyecto en el Masterplan 360."]),
         "en": _story("en", "The project", "Southern nature in the <em>Los Ríos Region</em>.", [
             "Parcelas Rofuco Bajo is in the Los Ríos Region, a land of rainforests, rivers and lakes in southern Chile.",
-            "57% of the plots are already sold. Ask for current availability, sizes and prices on WhatsApp or using the form."]),
+            "38 of its 60 plots are already sold and 22 remain, priced from CLP 24,500,000 to 28,000,000. Ask for prices on WhatsApp or via the form, and explore the project in the 360 Masterplan."]),
     },
     "dona-cecilia": {
         "es": _story("es", "El proyecto", "Las <em>últimas parcelas</em> en San Clemente, Región del Maule.", [
             "Parcelación Doña Cecilia está en la comuna de San Clemente, en la Región del Maule: praderas abiertas, caminos de ripio entre los terrenos y cerros en el horizonte.",
-            "Quedan las últimas 6 parcelas. Escríbenos para conocer su ubicación exacta, superficies, precios y opciones de crédito directo."]),
+            "Quedan las últimas 6 parcelas. Escríbenos para conocer su ubicación exacta, superficies, precios y formas de pago."]),
         "en": _story("en", "The project", "The <em>last plots</em> in San Clemente, Maule Region.", [
             "Parcelación Doña Cecilia is in the San Clemente district of the Maule Region: open meadows, gravel roads between the plots and hills on the horizon.",
-            "Only the last 6 plots remain. Write to us for the exact location, sizes, prices and direct financing options."]),
+            "Only the last 6 plots remain. Write to us for the exact location, sizes, prices and payment options."]),
     },
 }
 
@@ -94,7 +94,7 @@ def patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, co
   <div class="wrap">
     <span class="eyebrow light">{L(lang, 'Tu lugar en el sur', 'Your place in the south')}</span>
     <h2>{L(lang, 'Imagina volver aquí cada fin de semana', 'Imagine coming back here every weekend')}</h2>
-    <p>{L(lang, 'Parcelas con rol propio frente a ríos de Aysén, con crédito directo sin interés.', 'Plots with their own title facing rivers in Aysén, with interest-free direct financing.')}</p>
+    <p>{L(lang, 'Parcelas frente a ríos de Aysén, con crédito directo sin interés y asesoría legal.', 'Plots facing rivers in Aysén, with interest-free direct financing and legal support.')}</p>
     <div class="hero-ctas"><a class="btn btn-sun" href="{rel(path, PATHS['projects'][0 if lang == 'es' else 1])}">{L(lang, 'Ver parcelas', 'See plots')}</a></div>
   </div>
 </section>
@@ -135,8 +135,9 @@ def about(lang, page, img, L, rel, PATHS, IMG):
       <span class="eyebrow">{L(lang, 'Cómo trabajamos', 'How we work')}</span>
       <h2>{L(lang, 'Terrenos con agua, acceso y todo en regla', 'Land with water, access and everything in order')}</h2>
       <p>{L(lang, 'Inmobiliaria El Roble selecciona terrenos con agua, acceso y entorno natural en las regiones de Aysén, Los Ríos y el Maule, y acompaña cada compra hasta la escritura.', 'Inmobiliaria El Roble selects land with water, access and natural surroundings in the Aysén, Los Ríos and Maule regions, and supports every purchase through to the deed.')}</p>
+      <p class="legal-note">{L(lang, 'Te guiaremos y asesoraremos legalmente durante todo el proceso de compra, con el apoyo de nuestro staff de abogados.', 'We will guide you and provide legal advice throughout the entire purchase, with the support of our team of lawyers.')}</p>
       <ul class="ticks">
-        <li>{L(lang, 'Parcelas con rol propio, listas para escriturar', 'Plots with their own property title, ready for the deed')}</li>
+        <li>{L(lang, 'Asesoría legal con nuestro staff de abogados', 'Legal advice from our team of lawyers')}</li>
         <li>{L(lang, 'Crédito directo con la inmobiliaria', 'Direct financing with the developer')}</li>
         <li>{L(lang, 'Acceso por caminos y servidumbres de tránsito', 'Access by roads and rights-of-way')}</li>
         <li>{L(lang, 'Visitas al terreno coordinadas contigo', 'Site visits arranged with you')}</li>
@@ -151,8 +152,8 @@ def about(lang, page, img, L, rel, PATHS, IMG):
     <ol class="steps">
       <li><strong>{L(lang, 'Elige tu proyecto', 'Choose your project')}</strong><span>{L(lang, 'Revisa los proyectos y escríbenos para recibir precios, planos y disponibilidad.', 'Browse the projects and write to us for prices, plans and availability.')}</span></li>
       <li><strong>{L(lang, 'Visita el terreno', 'Visit the land')}</strong><span>{L(lang, 'Coordinamos contigo una visita para que conozcas la parcela y su entorno.', 'We arrange a visit so you can see the plot and its surroundings.')}</span></li>
-      <li><strong>{L(lang, 'Elige cómo pagar', 'Choose how to pay')}</strong><span>{L(lang, 'Al contado o con crédito directo sin interés. Simula tu plan en línea.', 'Cash or interest-free direct financing. Simulate your plan online.')}</span></li>
-      <li><strong>{L(lang, 'Firma y escritura', 'Sign and deed')}</strong><span>{L(lang, 'Te acompañamos en la firma ante notario y la inscripción de tu parcela.', 'We guide you through signing before a notary and registering your plot.')}</span></li>
+      <li><strong>{L(lang, 'Elige cómo pagar', 'Choose how to pay')}</strong><span>{L(lang, 'Al contado, con crédito bancario o con crédito directo sin interés, según el proyecto.', 'Cash, bank loan or interest-free direct financing, depending on the project.')}</span></li>
+      <li><strong>{L(lang, 'Firma y escritura', 'Sign and deed')}</strong><span>{L(lang, 'Te guiamos y asesoramos legalmente, con nuestro staff de abogados, en la firma ante notario y la inscripción de tu parcela.', 'Our team of lawyers guides you through signing before a notary and registering your plot.')}</span></li>
     </ol>
   </div>
 </section>
@@ -165,8 +166,8 @@ def about(lang, page, img, L, rel, PATHS, IMG):
   </div>
 </section>"""
     page(lang, "about", L(lang, "Nosotros · Inmobiliaria El Roble | Parcelas con Río", "About us · Inmobiliaria El Roble | Parcelas con Río"),
-         L(lang, "Inmobiliaria El Roble vende parcelas con rol propio frente a ríos en Aysén, Los Ríos y el Maule, con crédito directo y acompañamiento hasta la escritura.",
-           "Inmobiliaria El Roble sells riverside plots with their own title in Aysén, Los Ríos and Maule, with direct financing and support through to the deed."),
+         L(lang, "Inmobiliaria El Roble vende parcelas frente a ríos en Aysén, Los Ríos y el Maule, con crédito directo y asesoría legal durante todo el proceso de compra.",
+           "Inmobiliaria El Roble sells riverside plots in Aysén, Los Ríos and Maule, with direct financing and legal support throughout the purchase."),
          IMG["lengas"]["src"], body, current="about")
 
 

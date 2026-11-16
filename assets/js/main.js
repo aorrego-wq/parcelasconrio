@@ -48,42 +48,43 @@
   if(sel&&q){[].forEach.call(sel.options,function(o){if(o.value===q)sel.value=q})}
 
 
-  /* Simulador de crédito directo: pie y cuotas sin interés (precio ingresado por el visitante) */
+  /* Simulador de crédito directo: condiciones y precios por proyecto (data-config) */
   var sim=document.getElementById('sim');
   if(sim){
+    var cfg=JSON.parse(sim.dataset.config||'{}');
     var money=function(n){return '$'+Math.round(n).toLocaleString('es-CL')};
-    var priceEl=document.getElementById('simPrice'),projEl=document.getElementById('simProject');
+    var projEl=document.getElementById('simProject'),lotEl=document.getElementById('simLot'),plansEl=document.getElementById('simPlans');
     var qp=new URLSearchParams(location.search).get('proyecto');
     if(qp){[].forEach.call(projEl.options,function(o){if(o.value===qp)projEl.value=qp})}
     var t=lang==='en'
-      ?{down:'down',inst:'instalments',msg:'Hello, I simulated direct financing for {p}: price {t}, {pct}% down ({pie}) and {n} instalments of about {c}. Could you confirm availability and the price?'}
-      :{down:'de pie',inst:'cuotas',msg:'Hola, simulé el crédito directo para {p}: precio {t}, {pct}% de pie ({pie}) y {n} cuotas de aprox. {c}. ¿Me confirman disponibilidad y precio?'};
-    var calc=function(){
-      var price=parseInt((priceEl.value||'').replace(/\D/g,''),10)||0;
-      if(document.activeElement!==priceEl&&price) priceEl.value=price.toLocaleString('es-CL');
-      [].forEach.call(sim.querySelectorAll('[data-cuota]'),function(el){
-        var k=el.dataset.cuota.split('-'),pct=+k[0],n=+k[1];
-        el.textContent=price?money(price*(1-pct/100)/n)+(lang==='en'?'/mo':'/mes'):(lang==='en'?'Instalment by price':'Cuota según precio');
-      });
-      var sel=sim.querySelector('input[name=plan]:checked').value.split('-'),pct=+sel[0],n=+sel[1];
-      var pie=price*pct/100,saldo=price-pie,cuota=saldo/n;
-      var big=document.getElementById('simCuota');big.textContent=price?money(cuota):(lang==='en'?'Enter a price':'Ingresa un precio');big.classList.toggle('empty',!price);
-      document.getElementById('simPlan').textContent=n+' '+t.inst+' · '+pct+'% '+t.down;
-      document.getElementById('simTotal').textContent=price?money(price):'—';
-      document.getElementById('simPie').textContent=price?money(pie):'—';
-      document.getElementById('simSaldo').textContent=price?money(saldo):'—';
-      var txt=t.msg.replace('{p}',projEl.value).replace('{t}',money(price)).replace('{pct}',pct).replace('{pie}',money(pie)).replace('{n}',n).replace('{c}',money(cuota));
-      document.getElementById('simWa').href='https://wa.me/56978893044?text='+encodeURIComponent(price?txt:(lang==='en'?'Hello, I would like the price of '+projEl.value+' to simulate direct financing.':'Hola, quiero el precio de '+projEl.value+' para simular el crédito directo.'));
-      var hid=document.querySelector('form.lead-form input[name=simulacion]');
-      if(hid) hid.value=price?txt:'';
-      var fs=document.querySelector('form.lead-form select[name=proyecto]');
-      if(fs){[].forEach.call(fs.options,function(o){if(o.value===projEl.value)fs.value=projEl.value})}
+      ?{down:'down',inst:'instalments',mo:'/mo',msg:'Hello, I simulated direct financing for {p}, {l}: price {t}, {pct}% down ({pie}) and {n} instalments of about {c}. Could you confirm availability?'}
+      :{down:'de pie',inst:'cuotas',mo:'/mes',msg:'Hola, simulé el crédito directo para {p}, {l}: precio {t}, {pct}% de pie ({pie}) y {n} cuotas de aprox. {c}. ¿Me confirman disponibilidad?'};
+    var fillProject=function(){
+      var c=cfg[projEl.value]||{plans:[],lots:[]};
+      lotEl.innerHTML=c.lots.map(function(l,i){return '<option value="'+i+'">'+l[0]+' · '+money(l[1])+'</option>'}).join('');
+      plansEl.innerHTML=c.plans.map(function(pl,i){return '<label class="plan"><input type="radio" name="plan" value="'+pl[0]+'-'+pl[1]+'"'+(i===0?' checked':'')+'><span class="plan-in"><b>'+pl[0]+'% '+t.down+'</b><span>'+pl[1]+' '+t.inst+'</span><em data-cuota="'+pl[0]+'-'+pl[1]+'">—</em></span></label>'}).join('');
+      [].forEach.call(plansEl.querySelectorAll('input'),function(r){r.addEventListener('change',calc)});
+      calc();
     };
-    priceEl.addEventListener('input',calc);
-    priceEl.addEventListener('blur',calc);
-    projEl.addEventListener('change',calc);
-    [].forEach.call(sim.querySelectorAll('input[name=plan]'),function(r){r.addEventListener('change',calc)});
-    calc();
+    var calc=function(){
+      var c=cfg[projEl.value]; if(!c||!c.lots.length) return;
+      var lot=c.lots[+lotEl.value||0],price=lot[1];
+      document.getElementById('simLotPrice').textContent=money(price);
+      [].forEach.call(plansEl.querySelectorAll('[data-cuota]'),function(el){var k=el.dataset.cuota.split('-');el.textContent=money(price*(1-k[0]/100)/k[1])+t.mo});
+      var sel=(plansEl.querySelector('input:checked')||{value:c.plans[0].join('-')}).value.split('-'),pct=+sel[0],n=+sel[1];
+      var pie=price*pct/100,saldo=price-pie,cuota=saldo/n;
+      document.getElementById('simCuota').textContent=money(cuota);
+      document.getElementById('simPlan').textContent=n+' '+t.inst+' · '+pct+'% '+t.down;
+      document.getElementById('simTotal').textContent=money(price);
+      document.getElementById('simPie').textContent=money(pie);
+      document.getElementById('simSaldo').textContent=money(saldo);
+      var txt=t.msg.replace('{p}',projEl.value).replace('{l}',lot[0]).replace('{t}',money(price)).replace('{pct}',pct).replace('{pie}',money(pie)).replace('{n}',n).replace('{c}',money(cuota));
+      document.getElementById('simWa').href='https://wa.me/56978893044?text='+encodeURIComponent(txt);
+      var hid=document.querySelector('form.lead-form input[name=simulacion]'); if(hid) hid.value=txt;
+    };
+    projEl.addEventListener('change',fillProject);
+    lotEl.addEventListener('change',calc);
+    fillProject();
   }
 
   /* Formulario: correo por FormSubmit. Contacto obligatorio; promociones opcional (se informa "no"). */

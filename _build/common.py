@@ -192,7 +192,7 @@ def footer(lang, path, blog_items=()):
     <div class="grid">
       <div>
         <img src="{r}assets/img/marca/logo-claro.png" width="397" height="400" alt="El Roble Inmobiliaria" loading="lazy">
-        <p>{L('Parcelas con rol propio junto a ríos del sur de Chile. Tu refugio en la Patagonia, con crédito directo.', 'Land plots with their own title next to rivers in southern Chile. Your refuge in Patagonia, with direct financing.')}</p>
+        <p>{L('Parcelas junto a ríos del sur de Chile. Tu refugio en la Patagonia, con crédito directo y asesoría legal.', 'Land plots next to rivers in southern Chile. Your refuge in Patagonia, with direct financing and legal support.')}</p>
         <div class="social-links"><a class="social-link" href="{IG}" target="_blank" rel="noopener" aria-label="{'Instagram de Inmobiliaria El Roble' if lang == 'es' else 'Inmobiliaria El Roble on Instagram'}" data-cta="footer-instagram">{IG_SVG}<span>Instagram</span></a><a class="social-link" href="{FB}" target="_blank" rel="noopener" aria-label="{'Facebook de Inmobiliaria El Roble' if lang == 'es' else 'Inmobiliaria El Roble on Facebook'}" data-cta="footer-facebook">{FB_SVG}<span>Facebook</span></a></div>
       </div>
       <div><h4>{L('Sitio', 'Site')}</h4><ul>{nav}</ul></div>

@@ -22,7 +22,7 @@ IMG = {
     "valle": {"src": "assets/img/paisajes/valle-primavera.webp", "alt_es": "Valle verde con bosque nativo en Aysén", "alt_en": "Green valley with native forest in Aysén"},
     "bosque_aereo": {"src": "assets/img/paisajes/bosque-aereo.webp", "alt_es": "Vista aérea de bosque nativo", "alt_en": "Aerial view of native forest"},
     "bosque": {"src": "assets/img/paisajes/bosque-interior.webp", "alt_es": "Interior de bosque nativo", "alt_en": "Inside a native forest"},
-    "plano_manihuales": {"src": "assets/img/proyectos/plano-horizontes-manihuales.jpg", "w": 760, "h": 1141, "alt_es": "Plano aéreo de los cuatro lotes de Horizontes de Mañihuales", "alt_en": "Aerial plan of the four lots at Horizontes de Mañihuales"},
+    "plano_manihuales": {"src": "assets/img/proyectos/plano-horizontes-manihuales-v2.jpg", "w": 760, "h": 1141, "alt_es": "Plano aéreo de los cuatro lotes de Horizontes de Mañihuales", "alt_en": "Aerial plan of the four lots at Horizontes de Mañihuales"},
     "paisaje_lago": {"src": "assets/img/proyectos/paisaje-lago.jpg", "alt_es": "Lago y cerros del sur de Chile con álamos", "alt_en": "Lake and hills in southern Chile with poplars"},
 }
 
@@ -30,29 +30,32 @@ IMG = {
 PROJECTS = [
     {
         "slug": "horizontes-de-manihuales", "name": "Horizontes de Mañihuales", "r": "XI",
-        "region_es": "Región de Aysén · Patagonia", "region_en": "Aysén Region · Patagonia",
-        "status_es": "3 de 4 disponibles", "status_en": "3 of 4 available", "badge_es": "Nuevo", "badge_en": "New", "sold": False, "pct": 25,
-        "short_es": "4 parcelas de 0,53 a 1 ha frente al río Mañihuales, con acceso por servidumbre y factibilidad eléctrica.",
-        "short_en": "4 plots of 0.53 to 1 ha facing the Mañihuales River, with right-of-way access and electricity feasibility.",
-        "img": "rio_manihuales_meandro", "real": True, "detail": True,
+        "region_es": "Región de Aysén · Villa Mañihuales", "region_en": "Aysén Region · Villa Mañihuales",
+        "status_es": "3 de 4 disponibles", "status_en": "3 of 4 available", "badge_es": "En verde", "badge_en": "Off-plan", "sold": False, "pct": 25,
+        "short_es": "4 parcelas de 0,53 a 1 ha frente al río Mañihuales, con acceso por camino público. Desde $28.000.000.",
+        "short_en": "4 plots of 0.53 to 1 ha facing the Mañihuales River, with public road access. From CLP 28,000,000.",
+        "img": "rio_manihuales_meandro", "real": True, "detail": True, "sim": True,
+        "map": (-45.069827, -72.161309),
         "gallery": ["rio_manihuales_meandro", "rio_manihuales_ribera", "manihuales_entorno_verde", "manihuales_vista_horizontal"],
         "video": "assets/video/proyectos/horizontes-de-manihuales.mp4",
     },
     {
         "slug": "don-guillermo", "name": "Parcelas Don Guillermo", "r": "XI",
         "region_es": "Región de Aysén · Carretera Austral", "region_en": "Aysén Region · Carretera Austral",
-        "status_es": "Queda 1 parcela", "status_en": "1 plot left", "badge_es": "Última", "badge_en": "Last one", "sold": False, "pct": 95,
-        "short_es": "Frente al río Emperador Guillermo, en plena Carretera Austral.",
-        "short_en": "Facing the Emperador Guillermo River, right on the Carretera Austral.",
+        "status_es": "Única disponible: B11", "status_en": "Only plot left: B11", "badge_es": "Última", "badge_en": "Last one", "sold": False, "pct": 95,
+        "short_es": "Frente al río Emperador Guillermo, en plena Carretera Austral. Queda solo la parcela B11, de 9.500 m².",
+        "short_en": "Facing the Emperador Guillermo River, right on the Carretera Austral. Only plot B11 (9,500 m²) is left.",
         "img": "carretera2", "detail": True,
+        "map": (-45.2840594, -72.1713018),
     },
     {
         "slug": "rofuco-bajo", "name": "Parcelas Rofuco Bajo", "r": "XIV",
         "region_es": "Región de Los Ríos", "region_en": "Los Ríos Region",
-        "status_es": "57% vendido", "status_en": "57% sold", "badge_es": "En venta", "badge_en": "For sale", "sold": False, "pct": 57,
-        "short_es": "Parcelas en el sector de Rofuco Bajo, en la Región de Los Ríos.",
-        "short_en": "Plots in the Rofuco Bajo area, Los Ríos Region.",
+        "status_es": "22 disponibles · 63% vendido", "status_en": "22 available · 63% sold", "badge_es": "En venta", "badge_en": "For sale", "sold": False, "pct": 63,
+        "short_es": "Parcelas en el sector de Rofuco Bajo, Región de Los Ríos. Desde $24.500.000 hasta $28.000.000.",
+        "short_en": "Plots in the Rofuco Bajo area, Los Ríos Region. From CLP 24,500,000 to 28,000,000.",
         "img": "paisaje_lago", "detail": True,
+        "masterplan": "https://virtualplan360.cl/masterplan/parcelas_rofuco_bajo/index.html",
     },
     {
         "slug": "dona-cecilia", "name": "Parcelación Doña Cecilia", "r": "VII",
@@ -72,14 +75,28 @@ PROJECTS = [
         "short_en": "Less than 20 minutes from Coyhaique and 1 km from the Carretera Austral.",
         "img": "villa_medina_valle_aereo", "real": True, "detail": False,
     },
+    {
+        "slug": "rio-simpson", "name": "Parcelas Río Simpson", "r": "XI",
+        "region_es": "Región de Aysén", "region_en": "Aysén Region",
+        "status_es": "100% vendido · 2022", "status_en": "100% sold · 2022", "badge_es": "Vendido", "badge_en": "Sold out", "sold": True, "pct": 100,
+        "short_es": "Proyecto junto al río Simpson, vendido completamente en 2022.",
+        "short_en": "Project next to the Simpson River, completely sold out in 2022.",
+        "img": "simpson3", "detail": False,
+    },
 ]
 
+# Horizontes de Mañihuales: (n, total, servidumbre, útil, precio CLP, reservada)
 MANIHUALES_LOTS = [
-    ("1", "0,610 ha · 6.100 m²", "0.610 ha · 6,100 m²", False),
-    ("2", "0,529 ha · 5.290 m²", "0.529 ha · 5,290 m²", False),
-    ("3", "0,861 ha · 8.610 m²", "0.861 ha · 8,610 m²", True),
-    ("4", "1 ha · 10.000 m²", "1 ha · 10,000 m²", False),
+    ("1", "0,610 ha", "0,110 ha", "0,50 ha", 28000000, False),
+    ("2", "0,529 ha", "0,029 ha", "0,50 ha", 28000000, False),
+    ("3", "0,861 ha", "0,031 ha", "0,830 ha", 33000000, True),
+    ("4", "1,00 ha", "—", "1,00 ha", 38000000, False),
 ]
+
+# Simulador de crédito directo por proyecto (solo proyectos con condiciones confirmadas)
+SIMULATOR = {
+    "Horizontes de Mañihuales": {"plans": [(50, 24)], "lots": [(f"Parcela {n}", price) for n, _, _, _, price, res in MANIHUALES_LOTS if not res]},
+}
 
 # Fotos de Wikimedia Commons (licencias CC; requieren crédito). Generado desde el manifiesto.
 IMG.update({
@@ -190,7 +207,7 @@ for _k, _f, _es, _en in [
     ("v_elizalde_botes", "lago-elizalde-botes", "Botes en un muelle del Lago Elizalde", "Boats at a pier on Lake Elizalde"),
     ("v_elizalde_lancha", "lago-elizalde-lancha", "Lancha navegando en el Lago Elizalde", "Boat cruising on Lake Elizalde"),
     ("v_elizalde_orilla", "lago-elizalde-orilla", "Orilla turquesa y bosque del Lago Elizalde", "Turquoise shore and forest at Lake Elizalde"),
-    ("v_lago_verde", "lago-verde", "Lago de color turquesa con montañas nevadas en Aysén", "Turquoise lake with snowy mountains in Aysén"),
+    ("v_lago_verde", "lago-verde", "Lago Verde, de aguas turquesa, a 15 minutos de Villa Cerro Castillo", "Lago Verde, with turquoise water, 15 minutes from Villa Cerro Castillo"),
     ("v_ibanez", "puerto-ibanez", "Vista aérea de Puerto Ingeniero Ibáñez y el Lago General Carrera", "Aerial view of Puerto Ingeniero Ibáñez and Lake General Carrera"),
     ("v_ibanez_muelle", "puerto-ibanez-muelle", "Antiguo muelle de madera en Puerto Ingeniero Ibáñez", "Old wooden pier in Puerto Ingeniero Ibáñez"),
     ("v_salto", "salto-rio-ibanez", "Salto del Río Ibáñez entre paredes de roca, vista aérea", "Ibáñez River falls between rock walls, aerial view"),
@@ -207,7 +224,7 @@ VIDEOS = [
     {"file": "puerto-ibanez", "poster": "v_ibanez", "art": "ibanez", "es": "Puerto Ingeniero Ibáñez", "en": "Puerto Ingeniero Ibáñez"},
     {"file": "lago-elizalde-muelle", "poster": "v_elizalde_muelle", "art": "elizalde", "es": "Muelle del Lago Elizalde", "en": "Lake Elizalde pier"},
     {"file": "valle-simpson", "poster": "v_simpson", "art": "rutasur", "es": "Praderas del Valle Simpson", "en": "Valle Simpson meadows"},
-    {"file": "lago-verde", "poster": "v_lago_verde", "art": "rutasur", "es": "Lago turquesa de Aysén", "en": "Turquoise lake in Aysén"},
+    {"file": "lago-verde", "poster": "v_lago_verde", "art": "rutasur", "es": "Lago Verde", "en": "Lago Verde"},
     {"file": "salto-rio-ibanez-cerca", "poster": "v_salto2", "art": "ibanez", "es": "Aguas del Río Ibáñez", "en": "Ibáñez River white water"},
     {"file": "lago-elizalde-orilla", "poster": "v_elizalde_orilla", "art": "elizalde", "es": "Orillas del Lago Elizalde", "en": "Lake Elizalde shoreline"},
     {"file": "puerto-ibanez-muelle", "poster": "v_ibanez_muelle", "art": "ibanez", "es": "Antiguo muelle de Puerto Ibáñez", "en": "Old pier at Puerto Ibáñez"},
