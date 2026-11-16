@@ -35,6 +35,7 @@ PATHS = {
     "thanks": ("gracias.html", "en/thank-you.html"),
     "blog": ("blog/index.html", "en/blog/index.html"),
     "simulator": ("simulador-credito-directo.html", "en/financing-simulator.html"),
+    "videos": ("patagonia/videos.html", "en/patagonia/videos.html"),
 }
 
 NAV = [

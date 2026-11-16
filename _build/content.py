@@ -54,12 +54,12 @@ PROJECT_STORY = {
 }
 
 
-def patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, contact_section):
+def patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, contact_section, video_card=None, VIDEOS=()):
     from data import IMG
     by = {a["key"]: a for a in ARTICLES}
     blocks = [
         ("aeropuerto", "coyhaique", False), ("marmol", "marmol2", True), ("carretera", "carretera2", False),
-        ("ski", "ski", True), ("pesca", "simpson3", False), ("castillo", "ccastillo4", True), ("vivir", "coy2", False),
+        ("ski", "ski", True), ("pesca", "simpson3", False), ("castillo", "ccastillo4", True), ("rutasur", "v_mirador", False), ("elizalde", "v_elizalde_lancha", True), ("ibanez", "v_salto", False), ("vivir", "coy2", True),
     ]
 
     def body(path):
@@ -99,6 +99,17 @@ def patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, co
   </div>
 </section>
 {''.join(secs[3:])}
+<section class="experiences">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow light">{L(lang, 'Filmado por Inmobiliaria El Roble', 'Filmed by Inmobiliaria El Roble')}</span>
+      <h2>{L(lang, 'La Patagonia en video', 'Patagonia on video')}</h2>
+      <p class="lead">{L(lang, 'Mira desde el aire algunos de los lugares que te esperan en Aysén.', 'See from above some of the places waiting for you in Aysén.')}</p>
+    </div>
+    <div class="vgrid">{''.join(video_card(path, v, lang, by) for v in VIDEOS[:3]) if video_card else ''}</div>
+    <p class="center" style="margin-top:34px"><a class="btn btn-sun" href="{rel(path, PATHS['videos'][0 if lang == 'es' else 1])}">{L(lang, 'Ver todos los videos', 'Watch all videos')}</a></p>
+  </div>
+</section>
 {contact_section(path, lang)}"""
     page(lang, "patagonia", L(lang, "Vivir la Patagonia: Coyhaique, Catedrales de Mármol, pesca, ski y trekking | Parcelas con Río", "Living in Patagonia: Coyhaique, Marble Caves, fishing, skiing and trekking | Parcelas con Río"),
          L(lang, "Todo lo que ofrece la Región de Aysén: cómo llegar a Coyhaique, Catedrales de Mármol, Carretera Austral, centro de ski El Fraile, pesca con mosca y trekking.",

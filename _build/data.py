@@ -178,3 +178,37 @@ IMG.update({
     'lago_frio_pesca_embarcacion': {"src": "assets/img/proyectos/pesca/lago-frio-pesca-embarcacion.webp", "w": 1920, "h": 1080, "alt_es": 'Dos personas pescando desde una embarcación en un lago de Aysén', "alt_en": 'Two people fishing from a boat on a lake in Aysén'},
     'lago_frio_pesca_panorama': {"src": "assets/img/proyectos/pesca/lago-frio-pesca-panorama.webp", "w": 1920, "h": 1080, "alt_es": 'Embarcación de pesca sobre las aguas tranquilas de Aysén', "alt_en": 'Fishing boat on the calm waters of a lake in Aysén'},
 })
+
+
+# Fotogramas de videos propios de Inmobiliaria El Roble (Videos para web)
+for _k, _f, _es, _en in [
+    ("v_carretera", "carretera-austral", "Carretera Austral entre matorrales y cerros, con un lago al fondo", "Carretera Austral through scrubland and hills, with a lake behind"),
+    ("v_simpson", "valle-simpson", "Praderas del sector Valle Simpson con cordillera al fondo", "Meadows in the Valle Simpson area with mountains behind"),
+    ("v_simpson2", "valle-simpson-cordillera", "Vista aérea de praderas y bosquetes con cordillera nevada", "Aerial view of meadows and woods with snowy mountains"),
+    ("v_mirador", "mirador-cerro-castillo", "Vista desde el mirador de la Cuesta del Diablo sobre las curvas de la Carretera Austral", "View from the Cuesta del Diablo lookout over the Carretera Austral switchbacks"),
+    ("v_elizalde_muelle", "lago-elizalde-muelle", "Muelle de madera y botes en el Lago Elizalde, vista aérea", "Wooden pier and boats on Lake Elizalde, aerial view"),
+    ("v_elizalde_botes", "lago-elizalde-botes", "Botes en un muelle del Lago Elizalde", "Boats at a pier on Lake Elizalde"),
+    ("v_elizalde_lancha", "lago-elizalde-lancha", "Lancha navegando en el Lago Elizalde", "Boat cruising on Lake Elizalde"),
+    ("v_elizalde_orilla", "lago-elizalde-orilla", "Orilla turquesa y bosque del Lago Elizalde", "Turquoise shore and forest at Lake Elizalde"),
+    ("v_lago_verde", "lago-verde", "Lago de color turquesa con montañas nevadas en Aysén", "Turquoise lake with snowy mountains in Aysén"),
+    ("v_ibanez", "puerto-ibanez", "Vista aérea de Puerto Ingeniero Ibáñez y el Lago General Carrera", "Aerial view of Puerto Ingeniero Ibáñez and Lake General Carrera"),
+    ("v_ibanez_muelle", "puerto-ibanez-muelle", "Antiguo muelle de madera en Puerto Ingeniero Ibáñez", "Old wooden pier in Puerto Ingeniero Ibáñez"),
+    ("v_salto", "salto-rio-ibanez", "Salto del Río Ibáñez entre paredes de roca, vista aérea", "Ibáñez River falls between rock walls, aerial view"),
+    ("v_salto2", "salto-rio-ibanez-cerca", "Aguas blancas del Salto del Río Ibáñez", "White water at the Ibáñez River falls"),
+]:
+    IMG[_k] = {"src": f"assets/img/videos/{_f}.jpg", "w": 1600, "h": 900, "alt_es": _es, "alt_en": _en}
+
+# Videos propios para la página "La Patagonia en video" (art = clave del artículo relacionado)
+VIDEOS = [
+    {"file": "salto-rio-ibanez", "poster": "v_salto", "art": "ibanez", "es": "Salto del Río Ibáñez", "en": "Ibáñez River falls"},
+    {"file": "lago-elizalde-lancha", "poster": "v_elizalde_lancha", "art": "elizalde", "es": "Navegando el Lago Elizalde", "en": "Boating on Lake Elizalde"},
+    {"file": "carretera-austral", "poster": "v_carretera", "art": "carretera", "es": "Carretera Austral", "en": "Carretera Austral"},
+    {"file": "mirador-cerro-castillo", "poster": "v_mirador", "art": "castillo", "es": "Mirador de la Cuesta del Diablo", "en": "Cuesta del Diablo lookout"},
+    {"file": "puerto-ibanez", "poster": "v_ibanez", "art": "ibanez", "es": "Puerto Ingeniero Ibáñez", "en": "Puerto Ingeniero Ibáñez"},
+    {"file": "lago-elizalde-muelle", "poster": "v_elizalde_muelle", "art": "elizalde", "es": "Muelle del Lago Elizalde", "en": "Lake Elizalde pier"},
+    {"file": "valle-simpson", "poster": "v_simpson", "art": "rutasur", "es": "Praderas del Valle Simpson", "en": "Valle Simpson meadows"},
+    {"file": "lago-verde", "poster": "v_lago_verde", "art": "rutasur", "es": "Lago turquesa de Aysén", "en": "Turquoise lake in Aysén"},
+    {"file": "salto-rio-ibanez-cerca", "poster": "v_salto2", "art": "ibanez", "es": "Aguas del Río Ibáñez", "en": "Ibáñez River white water"},
+    {"file": "lago-elizalde-orilla", "poster": "v_elizalde_orilla", "art": "elizalde", "es": "Orillas del Lago Elizalde", "en": "Lake Elizalde shoreline"},
+    {"file": "puerto-ibanez-muelle", "poster": "v_ibanez_muelle", "art": "ibanez", "es": "Antiguo muelle de Puerto Ibáñez", "en": "Old pier at Puerto Ibáñez"},
+]

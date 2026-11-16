@@ -51,6 +51,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/financing-simulator"/>
   </url>
   <url>
+    <loc>https://www.parcelasconrio.cl/patagonia/videos</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/patagonia/videos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/patagonia/videos"/>
+  </url>
+  <url>
     <loc>https://www.parcelasconrio.cl/blog/</loc>
     <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/"/>
@@ -94,6 +99,21 @@
     <loc>https://www.parcelasconrio.cl/blog/comprar-parcela-en-la-patagonia</loc>
     <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/comprar-parcela-en-la-patagonia"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/buying-land-in-chilean-patagonia"/>
+  </url>
+  <url>
+    <loc>https://www.parcelasconrio.cl/blog/lago-elizalde</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/lago-elizalde"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/lake-elizalde-aysen"/>
+  </url>
+  <url>
+    <loc>https://www.parcelasconrio.cl/blog/puerto-ibanez-y-salto-del-rio-ibanez</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/puerto-ibanez-y-salto-del-rio-ibanez"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/puerto-ibanez-and-ibanez-river-falls"/>
+  </url>
+  <url>
+    <loc>https://www.parcelasconrio.cl/blog/ruta-de-coyhaique-a-cerro-castillo</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/ruta-de-coyhaique-a-cerro-castillo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/coyhaique-to-cerro-castillo-road-trip"/>
   </url>
   <url>
     <loc>https://www.parcelasconrio.cl/en/</loc>
@@ -146,6 +166,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/financing-simulator"/>
   </url>
   <url>
+    <loc>https://www.parcelasconrio.cl/en/patagonia/videos</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/patagonia/videos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/patagonia/videos"/>
+  </url>
+  <url>
     <loc>https://www.parcelasconrio.cl/en/blog/</loc>
     <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/"/>
@@ -189,5 +214,20 @@
     <loc>https://www.parcelasconrio.cl/en/blog/buying-land-in-chilean-patagonia</loc>
     <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/comprar-parcela-en-la-patagonia"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/buying-land-in-chilean-patagonia"/>
+  </url>
+  <url>
+    <loc>https://www.parcelasconrio.cl/en/blog/lake-elizalde-aysen</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/lago-elizalde"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/lake-elizalde-aysen"/>
+  </url>
+  <url>
+    <loc>https://www.parcelasconrio.cl/en/blog/puerto-ibanez-and-ibanez-river-falls</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/puerto-ibanez-y-salto-del-rio-ibanez"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/puerto-ibanez-and-ibanez-river-falls"/>
+  </url>
+  <url>
+    <loc>https://www.parcelasconrio.cl/en/blog/coyhaique-to-cerro-castillo-road-trip</loc>
+    <xhtml:link rel="alternate" hreflang="es-CL" href="https://www.parcelasconrio.cl/blog/ruta-de-coyhaique-a-cerro-castillo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.parcelasconrio.cl/en/blog/coyhaique-to-cerro-castillo-road-trip"/>
   </url>
 </urlset>

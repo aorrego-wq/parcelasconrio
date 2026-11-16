@@ -58,3 +58,21 @@ Estas fotos muestran el lugar real. Si usas una, el `<figcaption>` **debe** term
 - `rio-simpson-1..4.jpg` (simpson1..4): 1 es una cascada en la Reserva; 2 y 3 son el río a su paso por Coyhaique (no en la reserva); 4 es un paredón en la reserva.
 - `carretera-austral-1..4.jpg` (ruta1..4): Ruta 7 al norte de Villa Cerro Castillo, tramo hacia Bahía Murta, sector Leones con ripio y vista al Lago Bertrand.
 - `nieve-camino-el-fraile-1.jpg` (fraile_nieve1): camino nevado al centro de ski El Fraile.
+
+## Ampliación (16-11-2026): guías nuevas y videos propios
+Nuevas claves y slugs (ES / EN):
+- elizalde: `lago-elizalde` / `lake-elizalde-aysen`
+- ibanez: `puerto-ibanez-y-salto-del-rio-ibanez` / `puerto-ibanez-and-ibanez-river-falls`
+- rutasur: `ruta-de-coyhaique-a-cerro-castillo` / `coyhaique-to-cerro-castillo-road-trip`
+Página de videos: ES `../patagonia/videos.html`, EN `../patagonia/videos.html` (desde `blog/` y desde `en/blog/` respectivamente).
+
+Fuente de datos adicional (además de la investigación original): `/private/tmp/claude-501/-Users-mac/6e7298ff-05ed-4006-81ad-674a22b9ee29/scratchpad/investigacion-patagonia-2.md`.
+
+### Fotos y videos propios de Inmobiliaria El Roble (no requieren crédito; en el pie pon "Video: Inmobiliaria El Roble" o "Foto: Inmobiliaria El Roble")
+Fotogramas (`assets/img/videos/<archivo>.jpg`, 1600×900): carretera-austral, valle-simpson, valle-simpson-cordillera, mirador-cerro-castillo, lago-elizalde-muelle, lago-elizalde-botes, lago-elizalde-lancha, lago-elizalde-orilla, lago-verde, puerto-ibanez, puerto-ibanez-muelle, salto-rio-ibanez, salto-rio-ibanez-cerca.
+Videos (`assets/video/patagonia/<archivo>.mp4`, mismo nombre que su fotograma salvo indicación): carretera-austral, valle-simpson, mirador-cerro-castillo, lago-elizalde-muelle, lago-elizalde-lancha, lago-elizalde-orilla, lago-verde, puerto-ibanez, puerto-ibanez-muelle, salto-rio-ibanez, salto-rio-ibanez-cerca.
+Para insertar un video (1 o 2 por artículo, con el prefijo de ruta del idioma):
+`<figure class="vid"><video controls playsinline preload="none" poster="../assets/img/videos/salto-rio-ibanez.jpg" src="../assets/video/patagonia/salto-rio-ibanez.mp4"></video><figcaption>Salto del Río Ibáñez. Video: Inmobiliaria El Roble</figcaption></figure>`
+(En EN el prefijo es `../../assets/...` y el pie "Video: Inmobiliaria El Roble".)
+Usa el video o la foto solo para el lugar que realmente muestra. El "lago-verde" es un lago turquesa: nómbralo como indique la investigación nueva (si no está confirmado cuál lago es, descríbelo como "un lago turquesa de la zona" sin darle nombre).
+Agrega en cada guía nueva un enlace a la página de videos.

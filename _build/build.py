@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, os.path.dirname(__file__))
 from common import (DOMAIN, FB, FB_SVG, ICONS, IG, IG_SVG, MAIL, PATHS, WA, WA_TXT, esc, footer,  # noqa: E402
                   head, header, lead_form, pretty, rel, root, wa_link, write)
-from data import IMG, MANIHUALES_LOTS, PROJECTS  # noqa: E402
+from data import IMG, MANIHUALES_LOTS, PROJECTS, VIDEOS  # noqa: E402
 from articles import ARTICLES  # noqa: E402
 
 LANGS = ("es", "en")
@@ -500,6 +500,54 @@ def simulator(lang):
          IMG["lengas"]["src"], body, current="simulator")
 
 
+
+# ---------------------------------------------------------------- Videos
+def video_card(path, v, lang, by):
+    a = by.get(v["art"])
+    link = f'<a class="link-arrow" href="{rel(path, art_path(a, lang))}">{L(lang, "Leer la guía", "Read the guide")} {ICONS["arrow"]}</a>' if a else ""
+    poster = root(path) + IMG[v["poster"]]["src"]
+    return f"""<figure class="vcard reveal">
+      <div class="vplayer"><video controls playsinline preload="none" poster="{poster}" src="{root(path)}assets/video/patagonia/{v['file']}.mp4" aria-label="{esc(v[lang])}"></video></div>
+      <figcaption><h3>{esc(v[lang])}</h3>{link}</figcaption>
+    </figure>"""
+
+
+def videos_page(lang):
+    by = {a["key"]: a for a in ARTICLES}
+
+    def body(path):
+        cards = "\n    ".join(video_card(path, v, lang, by) for v in VIDEOS)
+        return f"""<section class="page-hero">
+  {img(path, 'v_salto', lang, eager=True)}
+  <div class="wrap">
+    <nav class="crumbs"><a href="{rel(path, PATHS['home'][0 if lang == 'es' else 1])}">{L(lang, 'Inicio', 'Home')}</a><span>/</span><a href="{rel(path, PATHS['patagonia'][0 if lang == 'es' else 1])}">Patagonia</a><span>/</span>{L(lang, 'Videos', 'Videos')}</nav>
+    <span class="eyebrow light">{L(lang, 'Filmado por Inmobiliaria El Roble', 'Filmed by Inmobiliaria El Roble')}</span>
+    <h1>{L(lang, 'La Patagonia en video', 'Patagonia on video')}</h1>
+    <p class="lead">{L(lang, 'Recorre desde el aire la Carretera Austral, el Lago Elizalde, Puerto Ingeniero Ibáñez y el Salto del Río Ibáñez. Así es el territorio donde están nuestras parcelas.', 'Fly over the Carretera Austral, Lake Elizalde, Puerto Ingeniero Ibáñez and the Ibáñez River falls. This is the land where our plots are.')}</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="vgrid">
+    {cards}
+    </div>
+  </div>
+</section>
+<section class="band">
+  {img(path, 'v_elizalde_orilla', lang)}
+  <div class="wrap">
+    <span class="eyebrow light">{L(lang, 'Tu lugar en el sur', 'Your place in the south')}</span>
+    <h2>{L(lang, '¿Te imaginas vivir aquí?', 'Can you picture living here?')}</h2>
+    <p>{L(lang, 'Parcelas con rol propio frente a ríos de Aysén, con crédito directo sin interés.', 'Plots with their own title facing rivers in Aysén, with interest-free direct financing.')}</p>
+    <div class="hero-ctas"><a class="btn btn-sun" href="{rel(path, PATHS['projects'][0 if lang == 'es' else 1])}">{L(lang, 'Ver parcelas', 'See plots')}</a></div>
+  </div>
+</section>"""
+    page(lang, "videos", L(lang, "La Patagonia en video: Lago Elizalde, Puerto Ibáñez y más | Parcelas con Río", "Patagonia on video: Lake Elizalde, Puerto Ibáñez and more | Parcelas con Río"),
+         L(lang, "Videos aéreos de la Región de Aysén: Carretera Austral, Lago Elizalde, Puerto Ingeniero Ibáñez, Salto del Río Ibáñez y Valle Simpson.",
+           "Aerial videos of the Aysén Region: Carretera Austral, Lake Elizalde, Puerto Ingeniero Ibáñez, Ibáñez River falls and Valle Simpson."),
+         IMG["v_salto"]["src"], body, current="patagonia")
+
+
 def sitemap():
     rows = []
     seen = set()
@@ -525,10 +573,11 @@ def main():
         for p in PROJECTS:
             if p["detail"]:
                 project_page(p, lang)
-        content.patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, contact_section)
+        content.patagonia(lang, page, img, L, rel, PATHS, ARTICLES, art_path, post_cards, contact_section, video_card, VIDEOS)
         content.about(lang, page, img, L, rel, PATHS, IMG)
         content.contact(lang, page, img, L, contact_section)
         simulator(lang)
+        videos_page(lang)
         thanks(lang)
         blog_index(lang)
         for a in ARTICLES:
