@@ -101,7 +101,7 @@
         .then(function(r){return r.json()})
         .then(function(j){
           if(String(j.success)!=='true') throw new Error(j.message||'error');
-          location.href=root+(lang==='en'?'en/thank-you.html':'gracias.html');
+          location.href=root+(lang==='en'?'en/thank-you':'gracias');
         })
         .catch(function(){
           b.disabled=false; b.textContent=label;

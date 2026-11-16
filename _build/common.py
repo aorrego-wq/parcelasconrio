@@ -76,11 +76,18 @@ def root(from_path):
     return "../" * from_path.count("/")
 
 
-def pretty(path):
-    """URL pública limpia (sin index.html)."""
+def clean(path):
+    """Ruta sin .html: 'x/index.html' -> 'x/', 'contacto.html' -> 'contacto'."""
     if path.endswith("index.html"):
-        path = path[: -len("index.html")]
-    return f"{DOMAIN}/{path}"
+        return path[: -len("index.html")]
+    if path.endswith(".html"):
+        return path[: -len(".html")]
+    return path
+
+
+def pretty(path):
+    """URL pública limpia (sin .html)."""
+    return f"{DOMAIN}/{clean(path)}"
 
 
 def wa_link(text):
@@ -236,7 +243,24 @@ def lead_form(lang, projects, preset="", title=None):
     </form>"""
 
 
+def _clean_href(m):
+    url, rest = m.group(2), m.group(3)
+    if url.endswith("index.html"):
+        url = url[: -len("index.html")] or "./"
+    else:
+        url = url[: -len(".html")]
+    return f'{m.group(1)}{url}{rest}'
+
+
+def clean_links(html_text):
+    """Quita .html de los enlaces relativos (href) para usar URLs limpias."""
+    import re
+    return re.sub(r'(href=")(?!https?:|mailto:|tel:|#)([^"?#]*?\.html)([?#"])', _clean_href, html_text)
+
+
 def write(path, content):
+    if path.endswith(".html"):
+        content = clean_links(content)
     full = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(full) or ".", exist_ok=True)
     with open(full, "w", encoding="utf-8") as fh:
