@@ -3,6 +3,7 @@
 Uso:  python3 _build/build.py
 """
 import json
+from urllib.parse import quote
 import os
 import re
 import sys
@@ -278,9 +279,14 @@ def projects_index(lang):
          IMG["lago_reflejo"]["src"], body, current="projects")
 
 
-def attrs_section(path, lang):
+def attrs_section(path, lang, p=None):
+    if p and p.get("river_es"):
+        primero = ("river", p["river_" + lang], L(lang, "Un proyecto junto al río, en el paisaje natural de la Patagonia.", "A riverside project in Patagonia's natural landscape."))
+    else:
+        primero = ("tree", L(lang, "Entornos naturales elegidos con cuidado", "Carefully chosen natural settings"),
+                   L(lang, "Parcelaciones en paisajes de campo y junto a ríos, en distintos lugares de Chile.", "Subdivisions in countryside landscapes and next to rivers, in different parts of Chile."))
     items = [
-        ("river", L(lang, "Frente a ríos", "Riverfront"), L(lang, "Proyectos junto al Mañihuales, el Emperador Guillermo y otros cursos de agua.", "Projects next to the Mañihuales, the Emperador Guillermo and other rivers.")),
+        primero,
         ("road", L(lang, "Acceso", "Access"), L(lang, "Caminos y servidumbres de tránsito hasta cada lote.", "Roads and rights-of-way to every lot.")),
         ("doc", L(lang, "Asesoría legal", "Legal support"), L(lang, "Te guiamos y asesoramos legalmente en la compra, con nuestro staff de abogados.", "We guide and advise you legally throughout the purchase, with our team of lawyers.")),
         ("key", L(lang, "Crédito directo", "Direct financing"), L(lang, "Financiamiento directo con la inmobiliaria, sin pasar por el banco.", "Direct financing with the developer, no bank needed.")),
@@ -350,6 +356,67 @@ def manihuales_section(path, lang):
 </section>"""
 
 
+FACTS = {
+    "sag": ("doc", ("Subdivisión aprobada por el SAG", "Subdivision approved by the SAG"), ("La subdivisión cuenta con aprobación del Servicio Agrícola y Ganadero.", "The subdivision is approved by the Agricultural and Livestock Service (SAG).")),
+    "rol": ("key", ("Rol propio", "Own property roll"), ("Cada parcela tiene rol propio.", "Each plot has its own property roll number.")),
+    "luz": ("bolt", ("Empalme eléctrico previsto", "Planned electricity connection"), ("El proyecto contempla un empalme eléctrico para cada parcela.", "The project includes an electricity connection for each plot.")),
+}
+
+
+def facts_block(p, lang):
+    if not p.get("facts"):
+        return ""
+    cells = "".join(f'<div class="fact"><span class="ic">{ICONS[FACTS[k][0]]}</span><div><b>{L(lang, *FACTS[k][1])}</b><span>{L(lang, *FACTS[k][2])}</span></div></div>' for k in p["facts"])
+    return f"""<div class="facts-box"><span class="eyebrow">{L(lang, 'Antecedentes', 'Key facts')}</span><div class="facts">{cells}</div></div>"""
+
+
+def project_links(path, p, lang, simular=False):
+    out = []
+    if p.get("directions"):
+        out.append(f'<a class="btn btn-night" href="{p["directions"]}" target="_blank" rel="noopener" data-cta="{p["slug"]}-como-llegar">{L(lang, "Cómo llegar", "Get directions")} {ICONS["arrow"]}</a>')
+    if p.get("masterplan"):
+        out.append(f'<a class="btn btn-line" href="{p["masterplan"]}" target="_blank" rel="noopener" data-cta="{p["slug"]}-masterplan">{L(lang, "Ver Masterplan 360°", "View 360° Masterplan")}</a>')
+    if simular:
+        out.append(f'<a class="btn btn-line" href="{rel(path, PATHS["simulator"][0 if lang == "es" else 1])}?proyecto={quote(SIM_KEY.get(p["slug"], p["name"]))}" data-cta="{p["slug"]}-simulador">{L(lang, "Simular crédito directo", "Simulate direct financing")}</a>')
+    return f'<p class="proj-links">{"".join(out)}</p>' if out else ""
+
+
+SIM_KEY = {"horizontes-de-manihuales": "Horizontes de Mañihuales", "dona-cecilia": "San Clemente · Parcelación Doña Cecilia"}
+
+
+def dona_cecilia_section(path, p, lang):
+    full = root(path) + IMG["plano_dc_disponibles"]["src"]
+    lotes = root(path) + IMG["plano_dc_lotes"]["src"]
+    movil = IMG["plano_dc_disponibles_movil"]
+    return f"""<section style="padding-top:0">
+  <div class="wrap">
+    <div class="avail">
+      <div><b>6</b><span>{L(lang, 'parcelas disponibles de 18', 'plots available out of 18')}</span></div>
+      <div><b>5.000 m²</b><span>{L(lang, 'cada parcela disponible', 'each available plot')}</span></div>
+      <div><b>{money(19500000, lang)}</b><span>{L(lang, 'precio al contado (lista: ' + money(21000000, lang) + ')', 'cash price (list price: ' + money(21000000, lang) + ')')}</span></div>
+    </div>
+    {project_links(path, p, lang, simular=True)}
+    {facts_block(p, lang)}
+  </div>
+</section>
+<section class="plan-sec">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">{L(lang, 'Planos', 'Plans')}</span><h2>{L(lang, 'Elige tu parcela en el plano', 'Choose your plot on the plan')}</h2>
+      <p class="lead">{L(lang, 'Disponibles en verde: parcelas 6, 8, 14, 15, 16 y 17, todas de 5.000 m². En rojo, las vendidas; en azul, la reservada.', 'Available in green: plots 6, 8, 14, 15, 16 and 17, all 5,000 m². Sold plots in red; reserved in blue.')}</p></div>
+    <figure class="plan-wide">
+      <a href="{full}" target="_blank" rel="noopener" aria-label="{L(lang, 'Abrir el plano de disponibilidad en tamaño completo', 'Open the availability plan at full size')}"><picture><source media="(max-width: 720px)" srcset="{root(path)}{movil['src']}" width="{movil['w']}" height="{movil['h']}">{img(path, 'plano_dc_disponibles', lang)}</picture></a>
+      <figcaption><span class="leyenda"><i class="ok"></i>{L(lang, 'Disponible', 'Available')}</span><span class="leyenda"><i class="res"></i>{L(lang, 'Reservada', 'Reserved')}</span><span class="leyenda"><i class="sold"></i>{L(lang, 'Vendida', 'Sold')}</span>
+        <a class="link-arrow" href="{full}" target="_blank" rel="noopener">{L(lang, 'Ver en tamaño completo', 'View full size')} {ICONS['arrow']}</a></figcaption>
+    </figure>
+    <figure class="plan-wide" style="margin-top:34px">
+      <a href="{lotes}" target="_blank" rel="noopener" aria-label="{L(lang, 'Abrir el plano general en tamaño completo', 'Open the general plan at full size')}">{img(path, 'plano_dc_lotes', lang)}</a>
+      <figcaption>{L(lang, 'Plano general de la subdivisión: deslindes, camino interior, canales y superficie de cada lote (0,50 ha = 5.000 m²).', 'General subdivision plan: boundaries, internal road, canals and the area of each lot (0.50 ha = 5,000 m²).')}
+        <a class="link-arrow" href="{lotes}" target="_blank" rel="noopener">{L(lang, 'Ver en tamaño completo', 'View full size')} {ICONS['arrow']}</a></figcaption>
+    </figure>
+  </div>
+</section>"""
+
+
 def rofuco_section(path, p, lang):
     return f"""<section style="padding-top:0">
   <div class="wrap">
@@ -358,7 +425,8 @@ def rofuco_section(path, p, lang):
       <div><b>22</b><span>{L(lang, 'parcelas disponibles (aprox. 37%)', 'plots available (approx. 37%)')}</span></div>
       <div><b>{money(24500000, lang)} – {money(28000000, lang)}</b><span>{L(lang, 'precios; consúltalos por WhatsApp o formulario', 'prices; ask on WhatsApp or via the form')}</span></div>
     </div>
-    <p style="margin-top:22px"><a class="btn btn-night" href="{p['masterplan']}" target="_blank" rel="noopener" data-cta="rofuco-masterplan">{L(lang, 'Ver Masterplan 360', 'View 360 Masterplan')}</a></p>
+    {project_links(path, p, lang)}
+    {facts_block(p, lang)}
   </div>
 </section>"""
 
@@ -370,8 +438,10 @@ def project_page(p, lang):
         extra = ""
         if p["slug"] == "horizontes-de-manihuales":
             extra = manihuales_section(path, lang)
-        elif p.get("masterplan"):
+        elif p["slug"] == "rofuco-bajo":
             extra = rofuco_section(path, p, lang)
+        elif p["slug"] == "dona-cecilia":
+            extra = dona_cecilia_section(path, p, lang)
         if p.get("plan"):
             extra += f"""<section class="plan-sec">
   <div class="wrap">
@@ -382,7 +452,7 @@ def project_page(p, lang):
 </section>"""
         sim_btn = ""
         if p.get("sim"):
-            sim_btn = f"""<a class="btn btn-ghost" href="{rel(path, PATHS['simulator'][0 if lang == 'es' else 1])}?proyecto={p['name'].replace(' ', '+')}" data-cta="proyecto-{p['slug']}-simulador">{L(lang, 'Simular crédito', 'Simulate financing')}</a>"""
+            sim_btn = f"""<a class="btn btn-ghost" href="{rel(path, PATHS['simulator'][0 if lang == 'es' else 1])}?proyecto={quote(SIM_KEY.get(p['slug'], p['name']))}" data-cta="proyecto-{p['slug']}-simulador">{L(lang, 'Simular crédito', 'Simulate financing')}</a>"""
         else:
             sim_btn = f"""<a class="btn btn-ghost" href="#contacto">{L(lang, 'Agendar visita', 'Book a visit')}</a>"""
         story = PROJECT_STORY.get(p["slug"], {}).get(lang, "")
@@ -404,7 +474,7 @@ def project_page(p, lang):
 {extra}
 {gallery_section(path, p, lang)}
 {map_section(path, p, lang)}
-{attrs_section(path, lang)}
+{attrs_section(path, lang, p)}
 {contact_section(path, lang, p['name'])}"""
     page(lang, (es_p, en_p), f"{p['name']} · {L(lang, 'Parcelas en venta', 'Land for sale')} | Parcelas con Río",
          f"{p['short_' + lang]} {L(lang, 'Consulta precios y formas de pago.', 'Ask for prices and payment options.')}",
@@ -527,7 +597,7 @@ def simulator(lang):
     def body(path):
         projects = list(SIMULATOR.keys())
         opts = "".join(f'<option value="{esc(n)}">{esc(n)}</option>' for n in projects)
-        cfg = json.dumps({k: {"plans": v["plans"], "lots": v["lots"]} for k, v in SIMULATOR.items()}, ensure_ascii=False)
+        cfg = json.dumps({k: {"plans": v["plans"], "lots": v["lots"], "list": v.get("list"), "discount": v.get("discount"), "note": v.get("note_" + lang, "")} for k, v in SIMULATOR.items()}, ensure_ascii=False)
         return f"""<section class="page-hero" style="min-height:56svh">
   {img(path, 'lengas', lang, eager=True)}
   <div class="wrap">
@@ -544,7 +614,12 @@ def simulator(lang):
         <label>{L(lang, 'Proyecto', 'Project')}<select id="simProject">{opts}</select></label>
         <label>{L(lang, 'Parcela', 'Plot')}<select id="simLot"></select></label>
       </div>
-      <p class="sim-help">{L(lang, 'Precio de la parcela', 'Plot price')}: <b id="simLotPrice">—</b></p>
+      <p class="sim-help" id="simPriceRow">{L(lang, 'Precio de la parcela', 'Plot price')}: <b id="simLotPrice">—</b></p>
+      <dl class="sim-prices" id="simPrices" hidden>
+        <div><dt>{L(lang, 'Precio de lista', 'List price')}</dt><dd id="simList">—</dd></div>
+        <div><dt>{L(lang, 'Beneficio por pago al contado', 'Cash payment discount')}</dt><dd id="simDiscount">—</dd></div>
+        <div class="tot"><dt>{L(lang, 'Precio final al contado', 'Final cash price')}</dt><dd id="simCash">—</dd></div>
+      </dl>
       <fieldset class="plans"><legend>{L(lang, 'Modalidad de crédito directo', 'Direct financing option')}</legend><div id="simPlans"></div></fieldset>
       <p class="sim-help">{L(lang, 'También puedes pagar al contado o con crédito bancario.', 'You can also pay cash or with a bank loan.')} <a href="https://wa.me/{WA}" target="_blank" rel="noopener">WhatsApp {WA_TXT}</a></p>
     </div>
@@ -554,19 +629,20 @@ def simulator(lang):
       <p class="sim-big" id="simCuota">—</p>
       <p class="sim-plan" id="simPlan"></p>
       <dl>
-        <div><dt>{L(lang, 'Precio', 'Price')}</dt><dd id="simTotal">—</dd></div>
+        <div><dt id="simTotalLbl" data-base="{L(lang, 'Base del crédito directo', 'Direct financing base')}" data-price="{L(lang, 'Precio', 'Price')}">{L(lang, 'Precio', 'Price')}</dt><dd id="simTotal">—</dd></div>
         <div><dt>{L(lang, 'Pie inicial', 'Down payment')}</dt><dd id="simPie">—</dd></div>
         <div><dt>{L(lang, 'Saldo a financiar', 'Balance financed')}</dt><dd id="simSaldo">—</dd></div>
       </dl>
       <a class="btn btn-sun" id="simWa" href="https://wa.me/{WA}" target="_blank" rel="noopener" data-cta="simulador-whatsapp">{ICONS['wa']}{L(lang, 'Enviar simulación por WhatsApp', 'Send simulation on WhatsApp')}</a>
+      <p class="sim-cond" id="simNote" hidden></p>
       <p class="sim-note">{L(lang, 'Simulación referencial en pesos chilenos. Las cuotas se expresan en UF y no tienen intereses. Disponibilidad sujeta a confirmación comercial.', 'Illustrative simulation in Chilean pesos. Instalments are set in UF (Chile’s inflation-indexed unit) with no interest. Availability subject to commercial confirmation.')}</p>
     </aside>
   </div>
 </section>
 {contact_section(path, lang, projects[0] if projects else '')}"""
     page(lang, "simulator", L(lang, "Simulador de crédito directo para parcelas | Parcelas con Río", "Direct financing simulator for land plots | Parcelas con Río"),
-         L(lang, "Calcula el pie y la cuota del crédito directo sin interés para Horizontes de Mañihuales: 50% de pie y saldo en 24 cuotas en UF.",
-           "Calculate the down payment and instalment of interest-free direct financing for Horizontes de Mañihuales: 50% down and 24 instalments in UF."),
+         L(lang, "Calcula el pie y la cuota del crédito directo sin interés para Horizontes de Mañihuales y San Clemente: 50% de pie y saldo en 24 cuotas en UF.",
+           "Calculate the down payment and instalment of interest-free direct financing for Horizontes de Mañihuales and San Clemente: 50% down and 24 instalments in UF."),
          IMG["lengas"]["src"], body, current="simulator")
 
 

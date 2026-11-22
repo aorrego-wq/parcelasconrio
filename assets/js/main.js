@@ -70,6 +70,12 @@
       var c=cfg[projEl.value]; if(!c||!c.lots.length) return;
       var lot=c.lots[+lotEl.value||0],price=lot[1];
       document.getElementById('simLotPrice').textContent=money(price);
+      // Proyectos con precio de lista y beneficio al contado (San Clemente): se muestran por separado
+      var conLista=!!c.list,box=document.getElementById('simPrices');
+      if(box){box.hidden=!conLista;document.getElementById('simPriceRow').hidden=conLista;
+        if(conLista){document.getElementById('simList').textContent=money(c.list);document.getElementById('simDiscount').textContent='−'+money(c.discount||0);document.getElementById('simCash').textContent=money(c.list-(c.discount||0));}}
+      var lbl=document.getElementById('simTotalLbl'); if(lbl) lbl.textContent=conLista?lbl.dataset.base:lbl.dataset.price;
+      var nota=document.getElementById('simNote'); if(nota){nota.hidden=!c.note;nota.textContent=c.note||'';}
       [].forEach.call(plansEl.querySelectorAll('[data-cuota]'),function(el){var k=el.dataset.cuota.split('-');el.textContent=money(price*(1-k[0]/100)/k[1])+t.mo});
       var sel=(plansEl.querySelector('input:checked')||{value:c.plans[0].join('-')}).value.split('-'),pct=+sel[0],n=+sel[1];
       var pie=price*pct/100,saldo=price-pie,cuota=saldo/n;

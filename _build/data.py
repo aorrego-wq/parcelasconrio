@@ -23,6 +23,17 @@ IMG = {
     "bosque_aereo": {"src": "assets/img/paisajes/bosque-aereo.webp", "alt_es": "Vista aérea de bosque nativo", "alt_en": "Aerial view of native forest"},
     "bosque": {"src": "assets/img/paisajes/bosque-interior.webp", "alt_es": "Interior de bosque nativo", "alt_en": "Inside a native forest"},
     "plano_manihuales": {"src": "assets/img/proyectos/plano-horizontes-manihuales-v2.jpg", "w": 760, "h": 1141, "alt_es": "Plano aéreo de los cuatro lotes de Horizontes de Mañihuales", "alt_en": "Aerial plan of the four lots at Horizontes de Mañihuales"},
+    "plano_dc_disponibles": {"src": "assets/img/proyectos/plano-dona-cecilia-disponibles.webp", "w": 1920, "h": 1080, "alt_es": "Plano de subdivisión de Parcelación Doña Cecilia: en verde las parcelas disponibles 6, 8, 14, 15, 16 y 17; en rojo las vendidas y en azul la reservada", "alt_en": "Parcelación Doña Cecilia subdivision plan: available plots 6, 8, 14, 15, 16 and 17 in green, sold in red and reserved in blue"},
+    "plano_dc_disponibles_movil": {"src": "assets/img/proyectos/plano-dona-cecilia-disponibles-movil.webp", "w": 1040, "h": 1080, "alt_es": "Plano de Parcelación Doña Cecilia con las parcelas disponibles en verde", "alt_en": "Parcelación Doña Cecilia plan with available plots in green"},
+    "plano_dc_lotes": {"src": "assets/img/proyectos/plano-dona-cecilia-lotes.webp", "w": 1010, "h": 962, "alt_es": "Plano general de Parcelación Doña Cecilia con los deslindes, el camino interior y la superficie de cada lote", "alt_en": "General plan of Parcelación Doña Cecilia with boundaries, internal road and the area of each lot"},
+    **{f"rofuco_{i}": {"src": f"assets/img/proyectos/rofuco-bajo/rofuco-bajo-{i}.webp", "w": 1280, "h": 716, "alt_es": a_es, "alt_en": a_en} for i, a_es, a_en in [
+        (1, "Pradera y camino interior en Parcelas Rofuco Bajo", "Meadow and internal road at Parcelas Rofuco Bajo"),
+        (2, "Praderas abiertas con árboles nativos en Rofuco Bajo", "Open meadows with native trees at Rofuco Bajo"),
+        (3, "Gran árbol nativo sobre la pradera de Rofuco Bajo", "Large native tree over the Rofuco Bajo meadow"),
+        (4, "Borde de bosque junto a la pradera en Rofuco Bajo", "Forest edge next to the meadow at Rofuco Bajo"),
+        (5, "Árboles altos y pradera en Rofuco Bajo", "Tall trees and meadow at Rofuco Bajo"),
+        (6, "Vista amplia de praderas y bosque en Rofuco Bajo", "Wide view of meadows and forest at Rofuco Bajo"),
+        (7, "Construcciones en el sector de acceso de Rofuco Bajo", "Buildings at the entrance area of Rofuco Bajo")]},
     "paisaje_lago": {"src": "assets/img/proyectos/paisaje-lago.jpg", "alt_es": "Lago y cerros del sur de Chile con álamos", "alt_en": "Lake and hills in southern Chile with poplars"},
 }
 
@@ -35,6 +46,7 @@ PROJECTS = [
         "short_es": "4 parcelas de 0,53 a 1 ha frente al río Mañihuales, con acceso por camino público. Desde $28.000.000.",
         "short_en": "4 plots of 0.53 to 1 ha facing the Mañihuales River, with public road access. From CLP 28,000,000.",
         "img": "rio_manihuales_meandro", "real": True, "detail": True, "sim": True,
+        "river_es": "Frente al río Mañihuales", "river_en": "Facing the Mañihuales River",
         "map": (-45.069827, -72.161309),
         "gallery": ["rio_manihuales_meandro", "rio_manihuales_ribera", "manihuales_entorno_verde", "manihuales_vista_horizontal"],
         "video": "assets/video/proyectos/horizontes-de-manihuales.mp4",
@@ -46,6 +58,7 @@ PROJECTS = [
         "short_es": "Frente al río Emperador Guillermo, en plena Carretera Austral. Queda solo la parcela B11, de 9.500 m².",
         "short_en": "Facing the Emperador Guillermo River, right on the Carretera Austral. Only plot B11 (9,500 m²) is left.",
         "img": "carretera2", "detail": True,
+        "river_es": "Frente al río Emperador Guillermo", "river_en": "Facing the Emperador Guillermo River",
         "map": (-45.2840594, -72.1713018),
         "plan": "plano_don_guillermo",
     },
@@ -53,18 +66,26 @@ PROJECTS = [
         "slug": "rofuco-bajo", "name": "Parcelas Rofuco Bajo", "r": "XIV",
         "region_es": "Región de Los Ríos", "region_en": "Los Ríos Region",
         "status_es": "22 disponibles · 63% vendido", "status_en": "22 available · 63% sold", "badge_es": "En venta", "badge_en": "For sale", "sold": False, "pct": 63,
-        "short_es": "Parcelas en el sector de Rofuco Bajo, Región de Los Ríos. Desde $24.500.000 hasta $28.000.000.",
-        "short_en": "Plots in the Rofuco Bajo area, Los Ríos Region. From CLP 24,500,000 to 28,000,000.",
-        "img": "paisaje_lago", "detail": True,
+        "short_es": "Parcelación de praderas en la Región de Los Ríos, con acceso desde la Ruta 5 Sur. Desde $24.500.000 hasta $28.000.000.",
+        "short_en": "Meadow plots in the Los Ríos Region, with access from Route 5 South. From CLP 24,500,000 to 28,000,000.",
+        "img": "rofuco_2", "real": True, "detail": True,
         "masterplan": "https://virtualplan360.cl/masterplan/parcelas_rofuco_bajo/index.html",
+        "map": (-40.2555457, -72.9079419),
+        "directions": "https://maps.app.goo.gl/xWtajy56t5PBxSAa8",
+        "facts": ["sag", "rol"],
+        "gallery": ["rofuco_1", "rofuco_2", "rofuco_3", "rofuco_4", "rofuco_5", "rofuco_6", "rofuco_7"],
     },
     {
         "slug": "dona-cecilia", "name": "Parcelación Doña Cecilia", "r": "VII",
         "region_es": "Región del Maule · San Clemente", "region_en": "Maule Region · San Clemente",
         "status_es": "Últimas 6 parcelas", "status_en": "Last 6 plots", "badge_es": "Últimas", "badge_en": "Last plots", "sold": False, "pct": 85,
-        "short_es": "Últimas parcelas entre praderas y cerros en San Clemente, Región del Maule.",
-        "short_en": "Last plots among meadows and hills in San Clemente, Maule Region.",
-        "img": "dona_cecilia_panorama_rural", "real": True, "detail": True,
+        "short_es": "Últimas 6 parcelas de 5.000 m² entre praderas y cerros en San Clemente, Región del Maule. $19.500.000 al contado.",
+        "short_en": "Last 6 plots of 5,000 m² among meadows and hills in San Clemente, Maule Region. CLP 19,500,000 cash price.",
+        "img": "dona_cecilia_panorama_rural", "real": True, "detail": True, "sim": True,
+        "map": (-35.4731667, -71.2953611),
+        "directions": "https://maps.app.goo.gl/EXbZFjXgswrzoDWf6",
+        "masterplan": "https://www.helisterra.com/proyectos_helisterra/Do%C3%B1aCecilia/",
+        "facts": ["sag", "rol", "luz"],
         "gallery": ["dona_cecilia_panorama_rural", "dona_cecilia_camino_de_acceso", "dona_cecilia_camino_y_caballos", "dona_cecilia_campo_y_cerros", "dona_cecilia_terrenos_planos", "dona_cecilia_valle_aereo", "dona_cecilia_camino_aereo", "dona_cecilia_trazado_aereo"],
         "gallery2": ["maule_cascada_y_poza", "maule_embalse_vista_aerea", "maule_embalse_y_montanas"],
     },
@@ -95,8 +116,20 @@ MANIHUALES_LOTS = [
 ]
 
 # Simulador de crédito directo por proyecto (solo proyectos con condiciones confirmadas)
+# San Clemente (Parcelación Doña Cecilia): parcelas disponibles, todas de 5.000 m².
+# Precio de lista $21.000.000; beneficio por pago al contado $1.500.000; precio al contado $19.500.000.
+# PENDIENTE de validar con el cliente: que los $19.500.000 sean también la base oficial del crédito directo.
+SAN_CLEMENTE_LOTS = ["6", "8", "14", "15", "16", "17"]
+
 SIMULATOR = {
     "Horizontes de Mañihuales": {"plans": [(50, 24)], "lots": [(f"Parcela {n}", price) for n, _, _, _, price, res in MANIHUALES_LOTS if not res]},
+    "San Clemente · Parcelación Doña Cecilia": {
+        "plans": [(50, 24)],
+        "lots": [(f"Parcela {n} · 5.000 m²", 19500000) for n in SAN_CLEMENTE_LOTS],
+        "list": 21000000, "discount": 1500000,
+        "note_es": "Crédito directo con 50% de pie y saldo en 24 cuotas en UF, sin intereses. Cuota referencial equivalente a $406.250 mensuales. Su valor en pesos varía según la UF aplicable.",
+        "note_en": "Direct financing with 50% down and the balance in 24 instalments set in UF, with no interest. Reference instalment equivalent to CLP 406,250 per month. Its value in pesos varies with the applicable UF.",
+    },
 }
 
 # Fotos de Wikimedia Commons (licencias CC; requieren crédito). Generado desde el manifiesto.

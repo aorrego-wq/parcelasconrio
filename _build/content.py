@@ -36,20 +36,20 @@ PROJECT_STORY = {
             "The only plot left is B11, with 9,500 m². Write to us for its price and payment options."]),
     },
     "rofuco-bajo": {
-        "es": _story("es", "El proyecto", "Naturaleza del sur en la <em>Región de Los Ríos</em>.", [
-            "Parcelas Rofuco Bajo está en la Región de Los Ríos, tierra de bosques húmedos, ríos y lagos del sur de Chile.",
-            "Ya se vendieron 38 de sus 60 parcelas y quedan 22 disponibles, con precios desde $24.500.000 hasta $28.000.000. Consulta precios por WhatsApp o con el formulario, y recorre el proyecto en el Masterplan 360."]),
-        "en": _story("en", "The project", "Southern nature in the <em>Los Ríos Region</em>.", [
-            "Parcelas Rofuco Bajo is in the Los Ríos Region, a land of rainforests, rivers and lakes in southern Chile.",
-            "38 of its 60 plots are already sold and 22 remain, priced from CLP 24,500,000 to 28,000,000. Ask for prices on WhatsApp or via the form, and explore the project in the 360 Masterplan."]),
+        "es": _story("es", "El proyecto", "Praderas para disfrutar del campo en la <em>Región de Los Ríos</em>.", [
+            "Rofuco Bajo es una parcelación de praderas en la Región de Los Ríos, pensada para disfrutar del campo y descansar en familia. Tiene acceso desde la Ruta 5 Sur y está cerca de Río Bueno y La Unión, con conexión hacia los aeropuertos de Osorno y Valdivia.",
+            "Según los tiempos de referencia del proyecto, Lago Ranco y Futrono quedan a menos de 40 minutos. En distintas direcciones, también es posible llegar a Panguipulli, Riñihue, Frutillar y Puerto Varas en menos de 90 minutos."]),
+        "en": _story("en", "The project", "Meadows to enjoy the countryside in the <em>Los Ríos Region</em>.", [
+            "Rofuco Bajo is a meadow subdivision in the Los Ríos Region, designed for enjoying the countryside and relaxing with family. It has access from Route 5 South and is close to Río Bueno and La Unión, with connections to the Osorno and Valdivia airports.",
+            "According to the project's reference times, Lago Ranco and Futrono are less than 40 minutes away. In different directions, Panguipulli, Riñihue, Frutillar and Puerto Varas can also be reached in under 90 minutes."]),
     },
     "dona-cecilia": {
-        "es": _story("es", "El proyecto", "Las <em>últimas parcelas</em> en San Clemente, Región del Maule.", [
-            "Parcelación Doña Cecilia está en la comuna de San Clemente, en la Región del Maule: praderas abiertas, caminos de ripio entre los terrenos y cerros en el horizonte.",
-            "Quedan las últimas 6 parcelas. Escríbenos para conocer su ubicación exacta, superficies, precios y formas de pago."]),
-        "en": _story("en", "The project", "The <em>last plots</em> in San Clemente, Maule Region.", [
-            "Parcelación Doña Cecilia is in the San Clemente district of the Maule Region: open meadows, gravel roads between the plots and hills on the horizon.",
-            "Only the last 6 plots remain. Write to us for the exact location, sizes, prices and payment options."]),
+        "es": _story("es", "El proyecto", "Campo, cerros y lagos cerca, en <em>San Clemente</em>, Región del Maule.", [
+            "Parcelación Doña Cecilia se encuentra en la Región del Maule. Su acceso está en la ruta asfaltada K-455, que conecta San Clemente con Pelarco. El proyecto está a unos 30 minutos del lago Colbún y a 35 minutos de Talca, con acceso a las termas de Panimávida y Quinamávida.",
+            "Como referencia, el Parque Nacional Radal Siete Tazas queda a cerca de una hora. El paso fronterizo Pehuenche, el lago Vichuquén y la costa en Constitución o Pelluhue se encuentran a unas dos horas de viaje. Santiago está a aproximadamente tres horas."]),
+        "en": _story("en", "The project", "Countryside, hills and nearby lakes in <em>San Clemente</em>, Maule Region.", [
+            "Parcelación Doña Cecilia is in the Maule Region. Its access is on the paved K-455 road, which connects San Clemente with Pelarco. The project is about 30 minutes from Lake Colbún and 35 minutes from Talca, with access to the Panimávida and Quinamávida hot springs.",
+            "For reference, Radal Siete Tazas National Park is about an hour away. The Pehuenche border crossing, Lake Vichuquén and the coast at Constitución or Pelluhue are about two hours away. Santiago is roughly three hours away."]),
     },
 }
 
