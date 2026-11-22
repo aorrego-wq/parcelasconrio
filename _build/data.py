@@ -34,6 +34,7 @@ IMG = {
         (5, "Árboles altos y pradera en Rofuco Bajo", "Tall trees and meadow at Rofuco Bajo"),
         (6, "Vista amplia de praderas y bosque en Rofuco Bajo", "Wide view of meadows and forest at Rofuco Bajo"),
         (7, "Construcciones en el sector de acceso de Rofuco Bajo", "Buildings at the entrance area of Rofuco Bajo")]},
+    "rofuco_8": {"src": "assets/img/proyectos/rofuco-bajo/rofuco-bajo-8.webp", "w": 716, "h": 479, "alt_es": "Copas de los árboles del bosque de Rofuco Bajo vistas desde abajo", "alt_en": "Tree canopy of the Rofuco Bajo forest seen from below"},
     "paisaje_lago": {"src": "assets/img/proyectos/paisaje-lago.jpg", "alt_es": "Lago y cerros del sur de Chile con álamos", "alt_en": "Lake and hills in southern Chile with poplars"},
 }
 
@@ -73,7 +74,7 @@ PROJECTS = [
         "map": (-40.2555457, -72.9079419),
         "directions": "https://maps.app.goo.gl/xWtajy56t5PBxSAa8",
         "facts": ["sag", "rol"],
-        "gallery": ["rofuco_1", "rofuco_2", "rofuco_3", "rofuco_4", "rofuco_5", "rofuco_6", "rofuco_7"],
+        "gallery": ["rofuco_1", "rofuco_2", "rofuco_3", "rofuco_4", "rofuco_5", "rofuco_6", "rofuco_7", "rofuco_8"],
     },
     {
         "slug": "dona-cecilia", "name": "Parcelación Doña Cecilia", "r": "VII",
@@ -118,17 +119,18 @@ MANIHUALES_LOTS = [
 # Simulador de crédito directo por proyecto (solo proyectos con condiciones confirmadas)
 # San Clemente (Parcelación Doña Cecilia): parcelas disponibles, todas de 5.000 m².
 # Precio de lista $21.000.000; beneficio por pago al contado $1.500.000; precio al contado $19.500.000.
-# PENDIENTE de validar con el cliente: que los $19.500.000 sean también la base oficial del crédito directo.
+# Validado con el cliente (22-nov-2026): el crédito directo se calcula sobre el precio de lista; los $19.500.000 son solo
+# el precio al contado. Todos los montos del simulador se muestran en pesos.
 SAN_CLEMENTE_LOTS = ["6", "8", "14", "15", "16", "17"]
 
 SIMULATOR = {
     "Horizontes de Mañihuales": {"plans": [(50, 24)], "lots": [(f"Parcela {n}", price) for n, _, _, _, price, res in MANIHUALES_LOTS if not res]},
     "San Clemente · Parcelación Doña Cecilia": {
         "plans": [(50, 24)],
-        "lots": [(f"Parcela {n} · 5.000 m²", 19500000) for n in SAN_CLEMENTE_LOTS],
+        "lots": [(f"Parcela {n} · 5.000 m²", 21000000) for n in SAN_CLEMENTE_LOTS],
         "list": 21000000, "discount": 1500000,
-        "note_es": "Crédito directo con 50% de pie y saldo en 24 cuotas en UF, sin intereses. Cuota referencial equivalente a $406.250 mensuales. Su valor en pesos varía según la UF aplicable.",
-        "note_en": "Direct financing with 50% down and the balance in 24 instalments set in UF, with no interest. Reference instalment equivalent to CLP 406,250 per month. Its value in pesos varies with the applicable UF.",
+        "note_es": "Crédito directo con 50% de pie y saldo en 24 cuotas en UF, sin intereses. Cuota referencial equivalente a $437.500 mensuales. Su valor en pesos varía según la UF aplicable.",
+        "note_en": "Direct financing with 50% down and the balance in 24 instalments set in UF, with no interest. Reference instalment equivalent to CLP 437,500 per month. Its value in pesos varies with the applicable UF.",
     },
 }
 
