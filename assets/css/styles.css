@@ -529,3 +529,19 @@ body.scrolled .wa-float{opacity:1;transform:none;pointer-events:auto}
 .sim-prices .tot{border-top:1px solid var(--line);padding-top:8px}.sim-prices .tot dd{font-size:1.1rem}
 .sim-cond{font-size:.88rem;line-height:1.5;color:#fff;background:rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;margin-top:16px}
 @media (max-width:720px){.plan-wide figcaption .link-arrow{margin-left:0}}
+
+/* Ficha: resumen con aire arriba, Masterplan 360° insertado y planos en grilla (Doña Cecilia, Rofuco Bajo) */
+.ficha-sec{padding-top:clamp(44px,6vw,72px);padding-bottom:clamp(20px,3vw,32px)}
+.mp-sec{padding-top:clamp(40px,5vw,64px)}
+.mp-box{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);aspect-ratio:16/9;background:var(--night)}
+.mp-box iframe{width:100%;height:100%;border:0;display:block}
+.planos-sec{padding-top:clamp(40px,5vw,64px)}
+.planos{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(20px,3vw,36px);align-items:start}
+.plano{margin:0}
+.plano-img{display:block;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.plano-img img,.plano-img picture{display:block;width:100%;height:auto}
+.plano figcaption{display:grid;gap:8px;padding:16px 4px 0;font-size:.92rem;color:var(--muted)}
+.plano figcaption b{font-family:var(--display);font-size:1.15rem;color:var(--night);font-weight:600}
+.plano figcaption .link-arrow{justify-self:start}
+.leyendas{display:flex;flex-wrap:wrap;gap:8px 18px}
+@media (max-width:860px){.planos{grid-template-columns:1fr;gap:34px}.mp-box{aspect-ratio:4/5}}

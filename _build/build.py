@@ -381,6 +381,19 @@ def project_links(path, p, lang, simular=False):
     return f'<p class="proj-links">{"".join(out)}</p>' if out else ""
 
 
+def masterplan_section(p, lang):
+    if not p.get("masterplan"):
+        return ""
+    return f"""<section class="mp-sec">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">{L(lang, 'Masterplan 360°', '360° Masterplan')}</span><h2>{L(lang, 'Recorre el proyecto', 'Explore the project')}</h2>
+      <p class="lead">{L(lang, 'Muévete por el loteo, acércate a cada parcela y revisa su ubicación dentro del proyecto.', 'Move around the subdivision, zoom in on each plot and see where it sits within the project.')}</p></div>
+    <div class="mp-box"><iframe src="{p['masterplan']}" title="{L(lang, 'Masterplan 360° de', '360° Masterplan of')} {esc(p['name'])}" loading="lazy" allow="fullscreen; accelerometer; gyroscope" allowfullscreen></iframe></div>
+    <p class="map-link"><a class="link-arrow" href="{p['masterplan']}" target="_blank" rel="noopener" data-cta="{p['slug']}-masterplan-completo">{L(lang, 'Abrir el Masterplan en pantalla completa', 'Open the Masterplan full screen')} {ICONS['arrow']}</a></p>
+  </div>
+</section>"""
+
+
 SIM_KEY = {"horizontes-de-manihuales": "Horizontes de Mañihuales", "dona-cecilia": "San Clemente · Parcelación Doña Cecilia"}
 
 
@@ -388,7 +401,8 @@ def dona_cecilia_section(path, p, lang):
     full = root(path) + IMG["plano_dc_disponibles"]["src"]
     lotes = root(path) + IMG["plano_dc_lotes"]["src"]
     movil = IMG["plano_dc_disponibles_movil"]
-    return f"""<section style="padding-top:0">
+    ver = L(lang, 'Ver en tamaño completo', 'View full size')
+    return f"""<section class="ficha-sec">
   <div class="wrap">
     <div class="avail">
       <div><b>6</b><span>{L(lang, 'parcelas disponibles de 18', 'plots available out of 18')}</span></div>
@@ -399,26 +413,35 @@ def dona_cecilia_section(path, p, lang):
     {facts_block(p, lang)}
   </div>
 </section>
-<section class="plan-sec">
+{masterplan_section(p, lang)}
+<section class="planos-sec">
   <div class="wrap">
     <div class="section-head"><span class="eyebrow">{L(lang, 'Planos', 'Plans')}</span><h2>{L(lang, 'Elige tu parcela en el plano', 'Choose your plot on the plan')}</h2>
       <p class="lead">{L(lang, 'Disponibles en verde: parcelas 6, 8, 14, 15, 16 y 17, todas de 5.000 m². En rojo, las vendidas; en azul, la reservada.', 'Available in green: plots 6, 8, 14, 15, 16 and 17, all 5,000 m². Sold plots in red; reserved in blue.')}</p></div>
-    <figure class="plan-wide">
-      <a href="{full}" target="_blank" rel="noopener" aria-label="{L(lang, 'Abrir el plano de disponibilidad en tamaño completo', 'Open the availability plan at full size')}"><picture><source media="(max-width: 720px)" srcset="{root(path)}{movil['src']}" width="{movil['w']}" height="{movil['h']}">{img(path, 'plano_dc_disponibles', lang)}</picture></a>
-      <figcaption><span class="leyenda"><i class="ok"></i>{L(lang, 'Disponible', 'Available')}</span><span class="leyenda"><i class="res"></i>{L(lang, 'Reservada', 'Reserved')}</span><span class="leyenda"><i class="sold"></i>{L(lang, 'Vendida', 'Sold')}</span>
-        <a class="link-arrow" href="{full}" target="_blank" rel="noopener">{L(lang, 'Ver en tamaño completo', 'View full size')} {ICONS['arrow']}</a></figcaption>
-    </figure>
-    <figure class="plan-wide" style="margin-top:34px">
-      <a href="{lotes}" target="_blank" rel="noopener" aria-label="{L(lang, 'Abrir el plano general en tamaño completo', 'Open the general plan at full size')}">{img(path, 'plano_dc_lotes', lang)}</a>
-      <figcaption>{L(lang, 'Plano general de la subdivisión: deslindes, camino interior, canales y superficie de cada lote (0,50 ha = 5.000 m²).', 'General subdivision plan: boundaries, internal road, canals and the area of each lot (0.50 ha = 5,000 m²).')}
-        <a class="link-arrow" href="{lotes}" target="_blank" rel="noopener">{L(lang, 'Ver en tamaño completo', 'View full size')} {ICONS['arrow']}</a></figcaption>
-    </figure>
+    <div class="planos">
+      <figure class="plano">
+        <a class="plano-img" href="{full}" target="_blank" rel="noopener" aria-label="{L(lang, 'Abrir el plano de disponibilidad en tamaño completo', 'Open the availability plan at full size')}"><picture><source media="(max-width: 720px)" srcset="{root(path)}{movil['src']}" width="{movil['w']}" height="{movil['h']}">{img(path, 'plano_dc_disponibles', lang)}</picture></a>
+        <figcaption>
+          <b>{L(lang, 'Disponibilidad', 'Availability')}</b>
+          <span class="leyendas"><span class="leyenda"><i class="ok"></i>{L(lang, 'Disponible', 'Available')}</span><span class="leyenda"><i class="res"></i>{L(lang, 'Reservada', 'Reserved')}</span><span class="leyenda"><i class="sold"></i>{L(lang, 'Vendida', 'Sold')}</span></span>
+          <a class="link-arrow" href="{full}" target="_blank" rel="noopener">{ver} {ICONS['arrow']}</a>
+        </figcaption>
+      </figure>
+      <figure class="plano">
+        <a class="plano-img" href="{lotes}" target="_blank" rel="noopener" aria-label="{L(lang, 'Abrir el plano general en tamaño completo', 'Open the general plan at full size')}">{img(path, 'plano_dc_lotes', lang)}</a>
+        <figcaption>
+          <b>{L(lang, 'Plano general', 'General plan')}</b>
+          <span>{L(lang, 'Deslindes, camino interior, canales y superficie de cada lote (0,50 ha = 5.000 m²).', 'Boundaries, internal road, canals and the area of each lot (0.50 ha = 5,000 m²).')}</span>
+          <a class="link-arrow" href="{lotes}" target="_blank" rel="noopener">{ver} {ICONS['arrow']}</a>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>"""
 
 
 def rofuco_section(path, p, lang):
-    return f"""<section style="padding-top:0">
+    return f"""<section class="ficha-sec">
   <div class="wrap">
     <div class="avail">
       <div><b>38 / 60</b><span>{L(lang, 'parcelas vendidas (aprox. 63%)', 'plots sold (approx. 63%)')}</span></div>
@@ -428,7 +451,8 @@ def rofuco_section(path, p, lang):
     {project_links(path, p, lang)}
     {facts_block(p, lang)}
   </div>
-</section>"""
+</section>
+{masterplan_section(p, lang)}"""
 
 
 def project_page(p, lang):
