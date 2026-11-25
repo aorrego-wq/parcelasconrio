@@ -63,16 +63,28 @@
   if(slug) px('ViewContent',base(),true);
   // Guías del blog y videos
   var h1=document.querySelector('h1');
-  if(/\/blog\/./.test(location.pathname)) px('VerGuia',ext(base(),{guia:h1?h1.textContent.trim():''}));
+  if(/\/blog\/./.test(location.pathname)){var g=h1?h1.textContent.trim():'';px('ViewContent',ext(base(),{content_name:g,content_type:'article',content_category:'Guías Patagonia'}),true);px('VerGuia',ext(base(),{guia:g}));}
+  if(/\/(proyectos|projects)\/?$/.test(location.pathname)) px('VerListadoProyectos',base());
+  if(/patagonia\/?$/.test(location.pathname)) px('VerPatagonia',base());
+  if(/nosotros|about/.test(location.pathname)) px('VerNosotros',base());
+  if(/contacto|contact/.test(location.pathname)) px('VerContacto',base());
+  if(location.pathname==='/'||/^\/(en\/)?(index)?$/.test(location.pathname)) px('VerInicio',base());
+  if(esLanding) px('VerLanding',base());
   if(/videos/.test(location.pathname)) px('VerVideosPatagonia',base());
   if(/simulador|financing-simulator/.test(location.pathname)) px('VerSimulador',base());
-  if(/gracias|thank-you/.test(location.pathname)) px('PaginaGracias',base());
+  if(/gracias|thank-you/.test(location.pathname)){px('CompleteRegistration',ext(base(),{status:'consulta_enviada'}),true);px('PaginaGracias',base());}
 
   // Clics: WhatsApp, correo, teléfono, mapas, masterplan, redes, idioma
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a'); if(!a) return;
     var h=a.getAttribute('href')||'',cta=a.getAttribute('data-cta')||'',p=base();
     if(cta) p.cta=cta;
+    var txt=(a.textContent||'').toLowerCase();
+    if(/agendar|book a visit|visita/.test(txt+cta)){px('Schedule',p,true);px('AgendarVisita',p);}
+    if(/simulador|financing-simulator/.test(h)) px('ClicSimulador',p);
+    if(/videos/.test(h)) px('ClicVideos',p);
+    if(/\/blog\//.test(h)) px('ClicGuia',p);
+    if(/#formulario|#contacto/.test(h)) px('ClicIrFormulario',p);
     if(/wa\.me|whatsapp\.com/.test(h)){px('Contact',ext(p,{metodo:'whatsapp'}),true);px('ClicWhatsApp',p);}
     else if(/^mailto:/.test(h)){px('Contact',ext(p,{metodo:'correo'}),true);px('ClicCorreo',p);}
     else if(/^tel:/.test(h)){px('Contact',ext(p,{metodo:'telefono'}),true);px('ClicTelefono',p);}
@@ -85,7 +97,7 @@
   },true);
 
   // Filtro de proyectos
-  [].forEach.call(document.querySelectorAll('.chip[data-r]'),function(c){c.addEventListener('click',function(){px('FiltroProyectos',ext(base(),{filtro:c.dataset.r}))})});
+  [].forEach.call(document.querySelectorAll('.chip[data-r]'),function(c){c.addEventListener('click',function(){px('Search',ext(base(),{search_string:c.dataset.r}),true);px('FiltroProyectos',ext(base(),{filtro:c.dataset.r}))})});
 
   // Secciones vistas: precios, masterplan, mapa, galería, formulario
   if('IntersectionObserver' in window){
@@ -194,7 +206,7 @@
     lotEl.addEventListener('change',calc);
     sim.addEventListener('change',simUsed);
     var simWa=document.getElementById('simWa');
-    if(simWa) simWa.addEventListener('click',function(){px('SimulacionWhatsApp',ext(base(byName[projEl.value]),{lote:lotEl.options[lotEl.selectedIndex]&&lotEl.options[lotEl.selectedIndex].text}))});
+    if(simWa) simWa.addEventListener('click',function(){px('InitiateCheckout',ext(base(byName[projEl.value]),{metodo:'credito_directo'}),true);px('SimulacionWhatsApp',ext(base(byName[projEl.value]),{lote:lotEl.options[lotEl.selectedIndex]&&lotEl.options[lotEl.selectedIndex].text}))});
     fillProject();
   }
 
@@ -220,7 +232,8 @@
           lp.promociones=fd.get('consentimiento_promociones');
           px('Lead',lp,true,{eventID:eid});
           px('FormularioEnviado',lp);
-          if(fd.get('simulacion')) px('LeadConSimulacion',lp);
+          if(fd.get('simulacion')){px('SubmitApplication',lp,true);px('LeadConSimulacion',lp);}
+          if(fd.get('consentimiento_promociones')==='si') px('AceptaPromociones',lp);
           var next=f.getAttribute('data-next')||(root+(lang==='en'?'en/thank-you':'gracias'));
           setTimeout(function(){location.href=next},600);
         })
