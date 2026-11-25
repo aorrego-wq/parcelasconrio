@@ -221,10 +221,11 @@
       if(!fd.has('consentimiento_promociones')) fd.set('consentimiento_promociones','no');
       fd.set('fecha_envio',new Date().toLocaleString('es-CL'));
       fd.set('pagina',location.pathname);
+      fd.set('_cc','parcelasconrio@gmail.com');
       // Origen de la visita (UTM de los anuncios) para saber qué campaña generó el contacto
       var qs=new URLSearchParams(location.search);
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){var v=qs.get(k);try{v=v||sessionStorage.getItem('pcr_'+k)}catch(e){}if(v) fd.set(k,v)});
-      fetch('https://formsubmit.co/ajax/parcelasconrio@gmail.com',{method:'POST',headers:{Accept:'application/json'},body:fd})
+      fetch('https://formsubmit.co/ajax/aorrego@challatin.cl',{method:'POST',headers:{Accept:'application/json'},body:fd})
         .then(function(r){return r.json()})
         .then(function(j){
           if(String(j.success)!=='true') throw new Error(j.message||'error');
