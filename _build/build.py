@@ -751,6 +751,8 @@ def main():
         blog_index(lang)
         for a in ARTICLES:
             article(a, lang)
+    import landings  # landings de campaña (noindex) y política de privacidad
+    landings.generate(sys.modules[__name__])
     sitemap()
     print("Páginas:", len(SITEMAP))
 

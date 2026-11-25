@@ -14,6 +14,8 @@ MAIL = "contacto@parcelasconrio.cl"
 IG = "https://www.instagram.com/inmobiliariaelroble.cl/"
 FB = "https://www.facebook.com/Inmobiliariaelroble.cl/"
 TEL = "+56978893044"
+# Píxel de Meta de Inmobiliaria El Roble (el mismo de terrazasdelfraile.cl: públicos de remarketing compartidos)
+PIXEL = "1687363185698793"
 IG_SVG = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect height="18" rx="5" width="18" x="3" y="3"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1"></circle></svg>'
 FB_SVG = '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14.2 21v-8h2.8l.4-3h-3.2V8.1c0-.9.3-1.5 1.6-1.5h1.7V3.9c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.4V10H8v3h2.8v8h3.4z"></path></svg>'
 
@@ -130,8 +132,10 @@ def head(lang, path, alt_path, title, desc, image, schema=None, noindex=False):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700;800&display=swap">
 <link rel="stylesheet" href="{r}assets/css/styles.css?v={asset_version('assets/css/styles.css')}">
+<script>!function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)}};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','{PIXEL}');fbq('track','PageView');</script>
 {ld}</head>
 <body>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id={PIXEL}&amp;ev=PageView&amp;noscript=1"></noscript>
 <a class="skip" href="#contenido">{'Saltar al contenido' if lang == 'es' else 'Skip to content'}</a>
 """
 
@@ -204,7 +208,7 @@ def footer(lang, path, blog_items=()):
         <li><a href="{FB}" target="_blank" rel="noopener">Facebook Inmobiliaria El Roble</a></li>
       </ul></div>
     </div>
-    <div class="bottom"><span>© 2026 Inmobiliaria El Roble · parcelasconrio.cl</span><span>{L('Algunas fotografías son referenciales del territorio.', 'Some photographs are illustrative of the region.')} <a href="{rel(path, PATHS['about'][i])}#creditos">{L('Créditos de fotos', 'Photo credits')}</a></span></div>
+    <div class="bottom"><span>© 2026 Inmobiliaria El Roble · parcelasconrio.cl</span><span>{L('Algunas fotografías son referenciales del territorio.', 'Some photographs are illustrative of the region.')} <a href="{rel(path, PATHS['about'][i])}#creditos">{L('Créditos de fotos', 'Photo credits')}</a> · <a href="{rel(path, 'privacidad.html' if lang == 'es' else 'en/privacy.html')}">{L('Privacidad', 'Privacy')}</a></span></div>
   </div>
 </footer>
 <a class="wa-float" href="https://wa.me/{WA}" target="_blank" rel="noopener" aria-label="WhatsApp" data-cta="flotante-whatsapp">{ICONS['wa']}</a>
